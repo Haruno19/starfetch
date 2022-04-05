@@ -4,9 +4,9 @@ Usage: starfetch [OPTION] [CONSTELLATION NAME]
     -h      Prints this help message.
     -n      Shows the selected constellation.
     -r      Shows a random constellation.
-    -l      Prints the list of the available constellations.
+    -l      Prints the list of all the available constellations.
     
-If called with no arguments, the behaviour is the same as with '-r'.
+If launched with no arguments, the behaviour is the same as with '-r'.
 
 Examples:   starfetch -r
             starfetch -n orion
