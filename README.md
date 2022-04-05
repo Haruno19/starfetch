@@ -6,7 +6,8 @@ A command line tool that displays constellations.
 
 ## Demo visuals
 
-<img width="600" src="https://user-images.githubusercontent.com/61376940/161754280-d007c9f2-157e-49e2-9ef1-0185a771f134.gif">
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/61376940/161760086-2033863a-e132-4f28-a3ee-d7bd61c963dc.gif)
+<img width="1375" alt="1" src="https://user-images.githubusercontent.com/61376940/161760417-8ba116fc-71a6-4d0c-8219-1b76a4121ace.png">
 
 ## Installation
 To install **starfetch**, you simply need to clone this repository and run the installation script!
