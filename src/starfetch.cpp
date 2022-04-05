@@ -18,7 +18,7 @@ void Help();
 #ifdef __APPLE__
     string path = "/usr/local/opt/starfetch/res/";
 #else
-    string path = "/usr/local/starfetch/";
+    string path = "/usr/local/starfetch/res/";
 #endif
 
 int main(int argc, char *argv[])
