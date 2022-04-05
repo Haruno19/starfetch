@@ -1,0 +1,12 @@
+orion
+aries
+cancer
+cygnus
+cassiopeia
+libra
+virgo
+leo
+capricorn
+taurus
+ursa_major
+ursa_minor
