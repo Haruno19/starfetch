@@ -1,5 +1,5 @@
 # starfetch
-A command line tool that displays constellations.
+A command line tool written in C++ that displays constellations.
 
 ## Description  
 **starfetch** is a tool that prints out a scheme of a given constellation and some information about it: its _quadrant_, its _right ascension_, its _declination_, ita _area_ and its _main stars number_.
