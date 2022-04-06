@@ -64,8 +64,43 @@ ursa_minor
 I will add more and more constellations!
 
 ## JSON Format
-All the constellation are stored within JSON files. 
-
+All the constellation data is stored as JSON files in the ``res/constellations/`` directory.  
+  
+Here's a sample of the JSON format from the **Orion** constellation:
+```
+{
+    "title": "───── ｏｒｉｏｎ ─────",
+    "graph":
+        {
+            "line1": { },
+            "line2": { "11": "✦" },
+            "line3": { "7": "✦" },
+            "line4": { "14": "✦" },
+            "line5": { },
+            "line6": { "9": "✦", "11": "✦", "13": "✦"},
+            "line7": { },
+            "line8": { "15": "✦" },
+            "line9": { "8": "✦" },
+            "line10": { }
+        },
+    "name": "Orion",
+    "quadrant": "NQ1",
+    "right ascension": "5h",
+    "declination": "+5°",
+    "area": "594 sq.deg. (26th)",
+    "main stars": "7"
+}
+```
+* ``"title"`` contains the first line of the constellation graph, written with fullwidth Unicode characters.
+* ``"graph"`` contains 10 lines keys, describing the constellation graph.
+* ``line1 to line10`` contain the X coordinate of the stars on the relative line (e.g. in the 9th line of Orion's graph there are three stars: one at position ``9``, one at poistion ``11`` and one at position ``13``). 
+* ``name`` contains the name of the constellation, this time written with regular characters.
+* ``quadrant`` contains the quadrant of the constellation.
+* ``right ascension`` contains the right ascension of the constellation.
+* ``declination`` contains the declination of the constellation.
+* ``area`` contains the area of the constellation.
+* ``main stars`` contains the number of stars that compose the constellation.
+  
 ## Credits & Dependencies
 To work easly with JSON files, starfetch relies on [JSON for Modern C++](https://github.com/nlohmann/json) by [Niels Lohmann](https://github.com/nlohmann).   
 Although relying on external libraries, no dependencies are needed to install starfetch, since said library is already included in this repository (``src/include/json.hpp``) via the [single_include](https://github.com/nlohmann/json/blob/develop/single_include/nlohmann/json.hpp) version provived by the author, in order to make it easier for you, the end user, to enjoy starfetch.
