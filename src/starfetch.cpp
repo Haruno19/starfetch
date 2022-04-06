@@ -61,7 +61,6 @@ void PrintConst(string pathc)
     stringstream strStream;
     string s, l;
     json j;
-    cout << pathc << endl;
 
     if(f.is_open()) 
     {
