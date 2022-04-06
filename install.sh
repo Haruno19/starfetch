@@ -1,6 +1,6 @@
 #!/bin/sh
 
-INSTALL_DIR='/usr/local/'
+INSTALL_DIR='/usr/local'
 BIN_DIR='/usr/local/bin'
 
 rm -rf $INSTALL_DIR/starfetch || return 1
