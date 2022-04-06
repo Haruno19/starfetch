@@ -1,5 +1,5 @@
 SRC = src/starfetch.cpp
-CC = clang++
+CC = g++
 CFLAGS = -std=c++17
 INSTALL_DIR = /usr/local
 INSTALL_DIR_MAC = /usr/local/opt
