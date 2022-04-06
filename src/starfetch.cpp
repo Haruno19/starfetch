@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <string>
 #include <time.h>
+#include <filesystem>
 
 using namespace std;
 
@@ -69,24 +70,33 @@ void PrintConst(string path)
 string RandomConst()
 {
     srand(time(NULL));
-    ifstream f(path + "c_list.txt");
+    
+    size_t pos;
     string s;
-    int max=0;
+    
+    for (const auto & entry : filesystem::directory_iterator(path+"constellations/"))
+    {
+        pos = entry.path().u8string().find("constellations/");    
+        s = entry.path().u8string().substr(pos);
+        if(s != "constellations/.DS_Store" && rand()%11 == rand()%11)
+            break;
+    }
 
-    while(getline(f,s)) max++;
-    f.clear();
-    f.seekg(0);
-    for(int i=0;i<rand()%max;i++) getline(f,s);
-    f.close();
-
-    return "constellations/" + s;
+    return s;
 }
 
 void PrintList()
 {
-    ifstream f(path + "c_list.txt");
-    std::cout << "✦ \e[1;37mavailable constellations\e[0m: " << endl << f.rdbuf() << endl;
-    f.close();
+    size_t pos;
+    string s;
+
+    cout << "✦ \e[1;37mavailable constellations\e[0m: " << endl; 
+    for (const auto & entry : filesystem::directory_iterator(path+"constellations/"))
+    {
+        pos = entry.path().u8string().find("constellations/");    
+        s = entry.path().u8string().substr(pos+15);
+        if(s != ".DS_Store")    cout << s << endl;
+    }  
     exit(0);
 }
 
