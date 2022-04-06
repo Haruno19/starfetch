@@ -10,23 +10,22 @@ A command line tool written in C++ that displays constellations.
 <img width="1375" alt="1" src="https://user-images.githubusercontent.com/61376940/161760417-8ba116fc-71a6-4d0c-8219-1b76a4121ace.png">
 
 ## Installation
-To install **starfetch**, you simply need to clone this repository and run the installation script!
+To install **starfetch**, run these commands:
 
 #### MacOS
 ```
 git clone https://github.com/Haruno19/starfetch
 cd starfetch
-chmod +x ./install_mac.sh
-sudo ./install_mac.sh
+make
+sudo make install_mac
 ```
 Install directoy: ``/usr/local/opt/starfetch/``.
 
 #### Others
 ```
 git clone https://github.com/Haruno19/starfetch
-cd starfetch
-chmod +x ./install.sh
-sudo ./install.sh
+make
+sudo make install
 ```
 Install directoy: ``/usr/local/starfetch/``.
 
