@@ -144,13 +144,13 @@ void Error(string err, int code)
     switch(code)    //each error has a specific code
     {
         case 0: //0 for the missing input
-            cout << "Error: you must input a constellation name after -n or --name." << endl << endl;
+            cout << endl << "Error: you must input a constellation name after -n." << endl << endl;
             break;
         case 1: //1 for the invalid argument
-            cout << "Error: '" << err << "' isn't a valid argument." << endl << endl;
+            cout << endl << "Error: '" << err << "' isn't a valid argument." << endl << endl;
             break;
         case 2: //2 for the invalid constellation name
-            cout << "Error: the constellation you asked for isn't recognized." << endl << endl;
+            cout << endl << "Error: the constellation you asked for isn't recognized." << endl << endl;
     }
     
     Help(); //after any error occours, the help message is shown
