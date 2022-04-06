@@ -1,0 +1,22 @@
+{
+    "title": "───── ｖｉｒｇｏ ─────",
+    "graph":
+        {
+            "line1": { },
+            "line2": { "10": "✦" },
+            "line3": { },
+            "line4": { "12": "✦" },
+            "line5": { "2": "✦",  "21": "✦" },
+            "line6": { "6": "✦",  "14": "✦",  "18": "✦"},
+            "line7": { "10": "✦" },
+            "line8": { },
+            "line9": { "6": "✦" },
+            "line10": { }
+        },
+    "name": "Virgo",
+    "quadrant": "SQ3",
+    "right ascension": "13h",
+    "declination": "-4°",
+    "area": "1294 sq.deg. (2nd)",
+    "main stars": "9, 15"
+}

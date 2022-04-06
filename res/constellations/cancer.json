@@ -1,0 +1,22 @@
+{
+    "title": "──── ｃａｎｃｅｒ ────",
+    "graph":
+        {
+            "line1": { },
+            "line2": { "7": "✦" },
+            "line3": { },
+            "line4": { "10": "✦" },
+            "line5": { "11": "✦" },
+            "line6": { },
+            "line7": { "17": "✦" },
+            "line8": { "8": "✦" },
+            "line9": { },
+            "line10": { }
+        },
+    "name": "Cancer",
+    "quadrant": "NQ1",
+    "right ascension": "07h 55m 19.7973s–09h 22m 35.0364s",
+    "declination": "+33.1415138° to –6.4700689°",
+    "area": "506 sq.deg. (31st)",
+    "main stars": "5"
+}

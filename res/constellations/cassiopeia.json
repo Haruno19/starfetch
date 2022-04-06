@@ -1,0 +1,22 @@
+{
+    "title": " ｃａｓｓｉｏｐｅｉａ ",
+    "graph":
+        {
+            "line1": { },
+            "line2": { },
+            "line3": { "4": "✦"},
+            "line4": { },
+            "line5": { "7": "✦", "12": "✦" },
+            "line6": { "20": "✦" },
+            "line7": { },
+            "line8": { "16": "✦" },
+            "line9": { },
+            "line10": { }
+        },
+    "name": "Cassiopeia",
+    "quadrant": "NQ1",
+    "right ascension": "22h 57m 04.5897s–03h 41m 14.0997s",
+    "declination": "+77.6923447° to –48.6632690°",
+    "area": "598 sq.deg. (25th)",
+    "main stars": "5"
+}

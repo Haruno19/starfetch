@@ -1,0 +1,22 @@
+{
+    "title": "──── ｃｙｇｎｕｓ ────",
+    "graph":
+        {
+            "line1": { },
+            "line2": { "18": "✦" },
+            "line3": { "9": "✦" },
+            "line4": { "15": "✦" },
+            "line5": { "11": "✦" },
+            "line6": { },
+            "line7": { "7": "✦", "15": "✦"},
+            "line8": { "4": "✦" },
+            "line9": { "18": "✦" },
+            "line10": { }
+        },
+    "name": "Cygnus",
+    "quadrant": "NQ4",
+    "right ascension": "20.62h",
+    "declination": "+42.03°",
+    "area": "804 sq.deg. (16th)",
+    "main stars": "9"
+}

@@ -1,0 +1,22 @@
+{
+    "title": "─────── ｌｅｏ ───────",
+    "graph":
+        {
+            "line1": { },
+            "line2": { "17": "✦" },
+            "line3": { "19": "✦" },
+            "line4": { "14": "✦" },
+            "line5": { "14": "✦" },
+            "line6": { "7": "✦", "17": "✦"},
+            "line7": { },
+            "line8": { "8": "✦", "18": "✦" },
+            "line9": { "3": "✦" },
+            "line10": { }
+        },
+    "name": "Leo",
+    "quadrant": "NQ2",
+    "right ascension": "11h",
+    "declination": "+15°",
+    "area": "947 sq.deg. (12th)",
+    "main stars": "9, 15"
+}

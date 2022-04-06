@@ -1,0 +1,22 @@
+{
+    "title": " ｕｒｓａ  ｍａｊｏｒ ",
+    "graph":
+        {
+            "line1": { },
+            "line2": { "5": "✦" },
+            "line3": { "8": "✦" },
+            "line4": { "9": "✦" },
+            "line5": { },
+            "line6": { "11": "✦" },
+            "line7": { },
+            "line8": { "9": "✦" },
+            "line9": { "17": "✦" },
+            "line10": { "13": "✦" }
+        },
+    "name": "Ursa Major",
+    "quadrant": "NQ2",
+    "right ascension": "10.67h",
+    "declination": "+55.38°",
+    "area": "1280 sq.deg. (3rd)",
+    "main stars": "7, 20"
+}

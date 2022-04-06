@@ -1,0 +1,22 @@
+{
+    "title": "───── ａｒｉｅｓ ─────",
+    "graph":
+        {
+            "line1": { },
+            "line2": { },
+            "line3": { "5": "✦" },
+            "line4": { },
+            "line5": { "15": "✦" },
+            "line6": { },
+            "line7": { "17": "✦" },
+            "line8": { "16": "✦" },
+            "line9": { },
+            "line10": { }
+        },
+    "name": "Aries",
+    "quadrant": "NQ1",
+    "right ascension": "01h 46m 37.3761s –03h 29m 42.4003s",
+    "declination": "+31.2213154° to –10.3632069°",
+    "area": "441 sq.deg. (39th)",
+    "main stars": "4, 9"
+}

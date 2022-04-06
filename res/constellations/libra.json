@@ -1,0 +1,22 @@
+{
+    "title": "───── ｌｉｂｒａ ─────",
+    "graph":
+        {
+            "line1": { },
+            "line2": { "12": "✦" },
+            "line3": { "18": "✦" },
+            "line4": { },
+            "line5": { "7": "✦" },
+            "line6": { "4": "✦", "17": "✦"},
+            "line7": { },
+            "line8": { "12": "✦" },
+            "line9": { "13": "✦" },
+            "line10": { }
+        },
+    "name": "Libra",
+    "quadrant": "SQ1",
+    "right ascension": "15h",
+    "declination": "-15°",
+    "area": "538 sq.deg. (29th)",
+    "main stars": "4, 6"
+}

@@ -1,0 +1,22 @@
+{
+    "title": "───── ｏｒｉｏｎ ─────",
+    "graph":
+        {
+            "line1": { },
+            "line2": { "11": "✦" },
+            "line3": { "7": "✦" },
+            "line4": { "14": "✦" },
+            "line5": { },
+            "line6": { "9": "✦", "11": "✦", "13": "✦"},
+            "line7": { },
+            "line8": { "15": "✦" },
+            "line9": { "8": "✦" },
+            "line10": { }
+        },
+    "name": "Orion",
+    "quadrant": "NQ1",
+    "right ascension": "5h",
+    "declination": "+5°",
+    "area": "594 sq.deg. (26th)",
+    "main stars": "7"
+}
