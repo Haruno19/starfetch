@@ -24,21 +24,22 @@ void Help();
 
 int main(int argc, char *argv[])
 {
+    string pathc = path;    //path to the constellation file
     if(argc == 1)
-        path += RandomConst();
+        pathc += RandomConst();
     else
         switch(argv[1][1])  //the 'n' in "-n"
         {
             case 'n':
                 if(argc < 3) Error(" ", 0);
-                path += "constellations/";
-                path += argv[2];
+                pathc += "constellations/";
+                pathc += argv[2];
                 break;
             case 'h':
                 Help();
                 break;
             case 'r':
-                path += RandomConst();
+                pathc += RandomConst();
                 break;
             case 'l':
                 PrintList();
@@ -46,23 +47,35 @@ int main(int argc, char *argv[])
                 Error(argv[1], 1);
         }
 
-    PrintConst(path);
+    PrintConst(pathc);
     return 0;
 }
 
-void PrintConst(string path)
+void PrintConst(string pathc)
 {
-    ifstream f(path);
+    ifstream c(pathc);
+    ifstream f(path+"template");
     stringstream strStream;
-    string s;
+    string s, l;
+    int i=1;
 
     if(f.is_open())
     {
         strStream << f.rdbuf();
         s = strStream.str();
         replace(s.begin(), s.end(), '^', '\033');   //replace '^' with the '\e' to print bold/colored text
-        std::cout << s << endl;
         f.close();
+    }
+
+    if(c.is_open()) //replace the placeholders in the template file %i to the line contained in the selected constellation
+    {
+        while(getline(c,l))
+        {
+            s.replace(s.find("%"+to_string(i)), string("%"+to_string(i)).size(), l);
+            i++;
+        }
+        c.close();
+        cout << s << endl;
     }else
         Error("", 2);
 }
