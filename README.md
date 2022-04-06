@@ -62,6 +62,13 @@ ursa_major
 ursa_minor
 ```
 I will add more and more constellations!
+
+## JSON Format
+All the constellation are stored within JSON files. 
+
+## Credits & Dependencies
+To work easly with JSON files, starfetch relies on [JSON for Modern C++](https://github.com/nlohmann/json) by [Niels Lohmann](https://github.com/nlohmann).   
+Although relying on external libraries, no dependencies are needed to install starfetch, since said library is already included in this repository (``src/include/json.hpp``) via the [single_include](https://github.com/nlohmann/json/blob/develop/single_include/nlohmann/json.hpp) version provived by the author, in order to make it easier for you, the end user, to enjoy starfetch.
   
 ---- 
 ###### All information regarding the constellations are taken from Wikipedia.
