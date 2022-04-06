@@ -72,8 +72,8 @@ void PrintConst(string pathc)
 
     if(c.is_open()) 
     {
-        c >> j;     //parse the selected json file
-        //fills the template with dat
+        c >> j;     //parse the selected JSON file
+        //fills the template with dats
         s.replace(s.find("%0"), string("%0").size(), j["title"].get<string>());
         s.replace(s.find("%11"), string("%11").size(), j["name"].get<string>());
         s.replace(s.find("%12"), string("%12").size(), j["quadrant"].get<string>());
@@ -82,16 +82,16 @@ void PrintConst(string pathc)
         s.replace(s.find("%15"), string("%15").size(), j["area"].get<string>());
         s.replace(s.find("%16"), string("%16").size(), j["main stars"].get<string>());
         
-        //renders the constellation's graph from the coordinates in the json file
+        //renders the constellation's graph from the coordinates specified in the JSON file
         for(int i=1;i<=10;i++)  //for each of the lines (10)
         {
             l="";
             for(int k=1;k<=22;k++)  //for each of the columns of the graph (22)
-                //if the json file specifies a star at position k
+                //if the JSON file specifies a star at position k
                 if(j["graph"]["line"+to_string(i)].find(to_string(k)) != j["graph"]["line"+to_string(i)].end())
-                    l+=j["graph"]["line"+to_string(i)][to_string(k)].get<string>(); //put the star
+                    l+=j["graph"]["line"+to_string(i)][to_string(k)].get<string>(); //put the star (which is stored into the JSON fine, might change this in the future)
                 else
-                    l+=" "; //put a white space
+                    l+=" "; //put a space
             
             //insert the line into the template
             s.replace(s.find("%"+to_string(i)), string("%"+to_string(i)).size(), l);
@@ -139,27 +139,27 @@ void PrintList()
     exit(0);
 }
 
-void Error(string err, int type)
+void Error(string err, int code)
 {
-    switch(type)
+    switch(code)    //each error has a specific code
     {
-        case 0:
-            std::cout << "Error: you must input a constellation name after -n or --name." << endl << endl;
+        case 0: //0 for the missing input
+            cout << "Error: you must input a constellation name after -n or --name." << endl << endl;
             break;
-        case 1:
-            std::cout << "Error: '" << err << "' isn't a valid argument." << endl << endl;
+        case 1: //1 for the invalid argument
+            cout << "Error: '" << err << "' isn't a valid argument." << endl << endl;
             break;
-        case 2:
-            std::cout << "Error: the constellation you asked for isn't recognized." << endl << endl;
+        case 2: //2 for the invalid constellation name
+            cout << "Error: the constellation you asked for isn't recognized." << endl << endl;
     }
     
-    Help();
+    Help(); //after any error occours, the help message is shown
 }
 
 void Help()
 {
     ifstream f(path + "help_message.txt");
-    std::cout << f.rdbuf();
+    cout << f.rdbuf();
     f.close();
     exit(0);
 }
