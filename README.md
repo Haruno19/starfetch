@@ -24,6 +24,7 @@ Install directoy: ``/usr/local/opt/starfetch/``.
 #### Others
 ```
 git clone https://github.com/Haruno19/starfetch
+cd starfetch
 make
 sudo make install
 ```
