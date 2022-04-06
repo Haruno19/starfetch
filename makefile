@@ -18,7 +18,7 @@ install_mac: starfetch
 	cp starfetch ${BIN_DIR}/starfetch
 
 install: starfetch
-	rm -rf ${INSTALL_DIR_MAC}/starfetch
+	rm -rf ${INSTALL_DIR}/starfetch
 	mkdir -p ${INSTALL_DIR}/starfetch
 	cp -rf ./res ${INSTALL_DIR}/starfetch/
 	chmod 711 starfetch
