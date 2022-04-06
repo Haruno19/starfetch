@@ -7,8 +7,10 @@
 #include <string>
 #include <time.h>
 #include <filesystem>
+#include "include/json.hpp"
 
 using namespace std;
+using json = nlohmann::json;
 
 void PrintConst(string pathc);  //formats the template file with the requested data and prints out the constellation info   
 string RandomConst();   //select a random constellation from the available ones
@@ -34,6 +36,7 @@ int main(int argc, char *argv[])
                 if(argc < 3) Error(" ", 0); //if the user requested a '-n' argument but didn't provide a name, an error occours
                 pathc += "constellations/"; //updating the path to the constellations folder
                 pathc += argv[2];   //adding the name of the requested constellation to the path
+                pathc += ".json";
                 break;
             case 'h':   
                 Help();
@@ -57,7 +60,8 @@ void PrintConst(string pathc)
     ifstream f(path+"template");    //opens the output template file
     stringstream strStream;
     string s, l;
-    int i=1;
+    json j;
+    cout << pathc << endl;
 
     if(f.is_open()) 
     {
@@ -69,12 +73,31 @@ void PrintConst(string pathc)
 
     if(c.is_open()) 
     {
-        while(getline(c,l))
+        c >> j;     //parse the selected json file
+        //fills the template with dat
+        s.replace(s.find("%0"), string("%0").size(), j["title"].get<string>());
+        s.replace(s.find("%11"), string("%11").size(), j["name"].get<string>());
+        s.replace(s.find("%12"), string("%12").size(), j["quadrant"].get<string>());
+        s.replace(s.find("%13"), string("%13").size(), j["right ascension"].get<string>());
+        s.replace(s.find("%14"), string("%14").size(), j["declination"].get<string>());
+        s.replace(s.find("%15"), string("%15").size(), j["area"].get<string>());
+        s.replace(s.find("%16"), string("%16").size(), j["main stars"].get<string>());
+        
+        //renders the constellation's graph from the coordinates in the json file
+        for(int i=1;i<=10;i++)  //for each of the lines (10)
         {
-            //replace the placeholders in the template file %i with the lines contained in the selected constellation
+            l="";
+            for(int k=1;k<=22;k++)  //for each of the columns of the graph (22)
+                //if the json file specifies a star at position k
+                if(j["graph"]["line"+to_string(i)].find(to_string(k)) != j["graph"]["line"+to_string(i)].end())
+                    l+=j["graph"]["line"+to_string(i)][to_string(k)].get<string>(); //put the star
+                else
+                    l+=" "; //put a white space
+            
+            //insert the line into the template
             s.replace(s.find("%"+to_string(i)), string("%"+to_string(i)).size(), l);
-            i++;
         }
+
         c.close();
         cout << s << endl;  //prints the output
     }else
@@ -110,9 +133,9 @@ void PrintList()
     //prints every constellation name from the files name in the "constellations/" directory
     for (const auto & entry : filesystem::directory_iterator(path+"constellations/"))
     {
-        pos = entry.path().u8string().find("constellations/"); 
-        s = entry.path().u8string().substr(pos+15); //from "/usr/local/opt/starfetch/re/constellations/xxxxxx" to "xxxxxx"
-        if(s != ".DS_Store")    cout << s << endl;
+        s = entry.path().u8string().substr(entry.path().u8string().find("constellations/")+15); //from "/usr/local/opt/starfetch/re/constellations/xxxxxx" to "xxxxxx"
+        s = s.substr(0, s.length()-5);
+        if(s != ".DS_")    cout << s << endl;
     }  
     exit(0);
 }
