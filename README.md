@@ -93,7 +93,7 @@ Here's a sample of the JSON format from the **Orion** constellation:
 ```
 * ``"title"`` contains the first line of the constellation graph, written with fullwidth Unicode characters.
 * ``"graph"`` contains 10 lines keys, describing the constellation graph.
-* ``line1 to line10`` contain the X coordinate of the stars on the relative line (e.g. in the 6th line of Orion's graph there are three stars: one at position ``9``, one at poistion ``11`` and one at position ``13``). 
+* ``line1 to line10`` contain the X coordinate of the stars on the relative line (e.g. the 6th line of Orion's graph contains three stars: one at position ``9``, one at poistion ``11`` and one at position ``13``). 
 * ``name`` contains the name of the constellation, this time written with regular characters.
 * ``quadrant`` contains the quadrant of the constellation.
 * ``right ascension`` contains the right ascension of the constellation.
@@ -106,4 +106,4 @@ To work easly with JSON files, starfetch relies on [JSON for Modern C++](https:/
 Although relying on external libraries, no dependencies are needed to install starfetch, since said library is already included in this repository (``src/include/json.hpp``) via the [single_include](https://github.com/nlohmann/json/blob/develop/single_include/nlohmann/json.hpp) version provived by the author, in order to make it easier for you, the end user, to enjoy starfetch.
   
 ---- 
-###### All information regarding the constellations are taken from Wikipedia.
+###### All data regarding the constellations are taken from Wikipedia.
