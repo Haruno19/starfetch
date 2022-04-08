@@ -1,0 +1,22 @@
+{
+    "title": "─────    Ara     ─────",
+    "graph":
+        {
+            "line1": { },
+            "line2": { "3":"✦"},
+            "line3": { "15":"✦"},
+            "line4": { },
+            "line5": { },
+            "line6": { "15":"✦","8":"✦"},
+            "line7": { },
+            "line8": { },
+            "line9": { "18":"✦"},
+            "line10": { "5":"✦"}
+        },
+    "name": "Ara",
+    "quadrant": "SQ3",
+    "right ascension":"16h 34m 16.9497s–18h 10m 41.3407s",
+    "declination": "−45.4859734°– −67.6905823°",
+    "area": "237 sq.deg. (63rd)",
+    "main stars": "8"
+}
