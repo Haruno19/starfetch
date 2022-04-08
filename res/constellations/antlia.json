@@ -1,0 +1,22 @@
+{
+    "title": "─────   Antila   ─────",
+    "graph":
+        {
+            "line1": { },
+            "line2": { },
+            "line3": { "15": "✦" },
+            "line4": { "": "✦" },
+            "line5": { "8":"✦"},
+            "line6": { "19": "✦", "": "✦", "": "✦"},
+            "line7": { },
+            "line8": { "4": "✦" },
+            "line9": { "": "✦" },
+            "line10": { }
+        },
+    "name": "Antlia",
+    "quadrant": "SQ2",
+    "right ascension": "09h 27m 05.1837s – 11h 05m 55.0471s",
+    "declination": "-24.5° ~ -40.4°",
+    "area": "239 sq.deg. (62nd)",
+    "main stars": "3"
+}
