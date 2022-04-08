@@ -1,0 +1,22 @@
+{
+    "title": "─ ｏｐｈｉｕｃｈｕｓ ─",
+    "graph":
+        {
+            "line1": { },
+            "line2": { "7": "✦" },
+            "line3": { "12": "✦" },
+            "line4": { "16": "✦" },
+            "line5": { "6": "✦",  "18": "✦" },
+            "line6": { "5": "✦",  "17": "✦" },
+            "line7": { },
+            "line8": { "15": "✦" },
+            "line9": { "4": "✦", "12": "✦" },
+            "line10": { }
+        },
+    "name": "Ophiuchus",
+    "quadrant": "SQ3",
+    "right ascension": "17h",
+    "declination": "-8°",
+    "area": "948 sq.deg. (11th)",
+    "main stars": "10"
+}
