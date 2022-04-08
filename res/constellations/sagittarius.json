@@ -1,0 +1,22 @@
+{
+    "title": "──── sagittarius ────",
+    "graph":
+        {
+            "line1": { },
+            "line2": { "11": "✦" },
+            "line3": { "5": "✦",  "7": "✦"},
+            "line4": { "13": "✦" },
+            "line5": { "3": "✦",  "16": "✦" },
+            "line6": { "5": "✦" },
+            "line7": { },
+            "line8": { "13": "✦" },
+            "line9": { },
+            "line10": { }
+        },
+    "name": "Sagittarius",
+    "quadrant": "SQ4",
+    "right ascension": "19h",
+    "declination": "-25°",
+    "area": "867 sq.deg. (15th)",
+    "main stars": "12,8"
+}

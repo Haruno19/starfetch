@@ -1,0 +1,22 @@
+{
+    "title": "────── aquarius ─────",
+    "graph":
+        {
+            "line1": { },
+            "line2": { "10": "✦",  "11": "✦" },
+            "line3": { "12": "✦",  "15": "✦" },
+            "line4": { "4": "✦" },
+            "line5": { "6": "✦",  "17": "✦" },
+            "line6": { "12": "✦" },
+            "line7": { "7": "✦" },
+            "line8": { "5": "✦",  "12": "✦" },
+            "line9": { "4": "✦",  "19": "✦" },
+            "line10": { }
+        },
+    "name": "Aquarius",
+    "quadrant": "SQ4",
+    "right ascension": "20h38m to 23h56m",
+    "declination": "3.325° to -24.904°",
+    "area": "980 sq.deg. (10th)",
+    "main stars": "10,22"
+}
