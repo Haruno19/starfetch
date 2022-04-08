@@ -60,6 +60,12 @@ capricorn
 taurus
 ursa_major
 ursa_minor
+gemini
+scorpio
+sagittarius
+aquarius
+ophiuchus
+pisces
 ```
 I will add more and more constellations!
 
@@ -105,5 +111,8 @@ Here's a sample of the JSON format from the **Orion** constellation:
 To work easly with JSON files, starfetch relies on [JSON for Modern C++](https://github.com/nlohmann/json) by [Niels Lohmann](https://github.com/nlohmann).   
 Although relying on external libraries, no dependencies are needed to install starfetch, since said library is already included in this repository (``src/include/json.hpp``) via the [single_include](https://github.com/nlohmann/json/blob/develop/single_include/nlohmann/json.hpp) version provived by the author, in order to make it easier for you, the end user, to enjoy starfetch.
   
+Credits to John Southern for creating JSON files for: ``gemini``, ``scorpio``, ``sagittarius``, ``aquarius``, ``ophiuchus`` and ``pisces``!
+
+
 ---- 
 ###### All data regarding the constellations are taken from Wikipedia.
