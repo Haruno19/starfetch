@@ -81,6 +81,9 @@ sagittarius
 aquarius
 ophiuchus
 pisces
+antlia
+ara
+apus
 ```
 I will add more and more constellations!
 
