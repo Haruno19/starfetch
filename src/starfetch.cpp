@@ -21,8 +21,7 @@ void Help();    //prints out the help message
 #ifdef __APPLE__    //selection the right working path based on the OS type
     string path = "/usr/local/opt/starfetch/res/";
 #else
-	// I modified the path to the testing repo .
-    string path = "/home/hushm/Documents/starfetch/res/";
+    string path = "/usr/local/starfetch/res/";
 #endif
 
 int main(int argc, char *argv[])
