@@ -129,7 +129,7 @@ Please, make sure to use them. Before and after the name, you have to put the [b
 Please, make sure to place the same number of box-drawing characters on both sides, in order to make the name appear at the center.  
 Between the constellation name and the box-drawing characters, you should place a whitespace.  
 (e.g. ``"───── ｎａｍｅ ─────"``).
-* The ``line1`` to ``line10`` field should containd the X coordinates of the stars in each line. 
+* The ``line1`` to ``line10`` fields should containd the X coordinates of the stars in each line. 
 Please, make sure to center the graph both vertically and horizontally and please, make sure not to leave any star without an X coordinate (e.g. **don't** write this: ``"" : "✦"``).
 * The ``"name"`` field should contain the name of the constellation starting with the capital letter.
 * The ``"quadrant"`` field should contain the quadrant of the constellation, all in capital letters and without spaces. 
