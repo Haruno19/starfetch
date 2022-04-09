@@ -1,5 +1,5 @@
 {
-    "title": "─────   Antila   ─────",
+    "title": "──── ａｎｔｌｉａ ────",
     "graph":
         {
             "line1": { },
@@ -15,8 +15,8 @@
         },
     "name": "Antlia",
     "quadrant": "SQ2",
-    "right ascension": "09h 27m 05.1837s – 11h 05m 55.0471s",
-    "declination": "-24.5° ~ -40.4°",
+    "right ascension": "09h 27m 05.1837s to 11h 05m 55.0471s",
+    "declination": "-24.5° to -40.4°",
     "area": "239 sq.deg. (62nd)",
     "main stars": "3"
 }
