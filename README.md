@@ -12,7 +12,7 @@ A command line tool written in C++ that displays constellations.
 * [JSON Format](https://github.com/Haruno19/starfetch#json-format)
     * [Contribution guidelines](https://github.com/Haruno19/starfetch#contribution-guidelines)
 * [Credits & Dependencies](https://github.com/Haruno19/starfetch#credits--dependencies)
-    * [JSON for Modern C++](https://github.com/Haruno19/starfetch#json-for-modern-c++)
+    * [JSON for Modern C++](https://github.com/Haruno19/starfetch#json-for-modern-c)
     * [Contributions](https://github.com/Haruno19/starfetch#contributions)
 ---
 
