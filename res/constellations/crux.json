@@ -1,0 +1,22 @@
+{
+    "title": "────── ａｐｕｓ ──────",
+    "graph":
+        {
+            "line1": { },
+            "line2": { "10":"✦"},
+            "line3": { },
+            "line4": { "16":"✦"},
+            "line5": { "5":"✦"},
+            "line6": { },
+            "line7": { },
+            "line8": { },
+            "line9": { "13":"✦"},
+            "line10": { }
+        },
+    "name": "Crux",
+    "quadrant": "SQ3",
+    "right ascension":"12.5h",
+    "declination": "−60°",
+    "area": "68 sq.deg. (88th)",
+    "main stars": "4"
+}
