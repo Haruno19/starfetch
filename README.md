@@ -63,27 +63,18 @@ Examples:   starfetch -r
 
 ## Available constellations
 ```
-orion
-aries
-cancer
-cygnus
-cassiopeia
-libra
-virgo
-leo
-capricorn
-taurus
-ursa_major
-ursa_minor
-gemini
-scorpio
-sagittarius
-aquarius
-ophiuchus
-pisces
-antlia
-ara
-apus
+orion          gemini
+aries          scorpio
+cancer         sagittarius
+cygnus         aquarius
+cassiopeia     ophiuchus
+libra          pisces
+virgo          antilia
+leo            ara
+capricorn      apus
+taurus         bootes
+ursa_major     crux
+ursa_minor     corona_borealis
 ```
 I will add more and more constellations!
 
