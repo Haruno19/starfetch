@@ -145,7 +145,7 @@ Please, make sure to include the unit of measurement, written with lowercase let
 * The ``"main stars"`` field should contain the number of stars that compose the constellation.
 Please, if there's more than a value for this field, make sure to separate them with a comma and a space, and place them in ascending order (e.g. ``"9, 11, 20"``).
   
-Your help is really appreciated!
+Your help is highly appreciated!
   
 ## Credits & Dependencies
 
@@ -154,7 +154,7 @@ To work easly with JSON files, starfetch relies on [JSON for Modern C++](https:/
 Although relying on external libraries, no dependencies are needed to install starfetch, since said library is already included in this repository (``src/include/json.hpp``) via the [single_include](https://github.com/nlohmann/json/blob/develop/single_include/nlohmann/json.hpp) version provided by the author, in order to make it easier for you, the end user, to enjoy starfetch.
   
 ### Contributions
-* Credits to John Southern for creating JSON files for the ``gemini``, ``scorpio``, ``sagittarius``, ``aquarius``, ``ophiuchus`` and ``pisces`` constellations!  
+* Credits to John Southern for creating the JSON files for the ``gemini``, ``scorpio``, ``sagittarius``, ``aquarius``, ``ophiuchus`` and ``pisces`` constellations!  
 * Credits to [Hushm](https://github.com/HushmKun) for creating the JSON files for the ``antlia``, ``ara`` and ``apus`` constellations!
 
 
