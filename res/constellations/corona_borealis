@@ -1,0 +1,22 @@
+{
+    "title": "ｃｒ  ｂｏｒｅａｌｉｓ",
+    "graph":
+        {
+            "line1": { },
+            "line2": { },
+            "line3": { "15": "✦"},
+            "line4": { },
+            "line5": { "3": "✦", "20": "✦" },
+            "line6": { },
+            "line7": { "5": "✦", "18": "✦"},
+            "line8": { "10": "✦", "13": "✦" },
+            "line9": { },
+            "line10": { }
+        },
+    "name": "Corona Borealis",
+    "quadrant": "NQ1",
+    "right ascension": "15h 16m 03.8205s to 16h 25m 07.1526s",
+    "declination": "+39.7117195° to +25.5380573°",
+    "area": "179 sq.deg. (73rd)",
+    "main stars": "8"
+}
