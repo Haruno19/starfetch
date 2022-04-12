@@ -1,0 +1,22 @@
+{
+    "title": "───── ｌｕｐｕｓ ─────",
+    "graph":
+        {
+            "line1": {  "6": "✦" },
+            "line2": { "11": "✦" },
+            "line3": { "2": "✦" },
+            "line4": { "8": "✦", "12": "✦" },
+            "line5": { "16": "✦" },
+            "line6": { "11": "✦"  },
+            "line7": { },
+            "line8": { "17": "✦"  },
+            "line9": { },
+            "line10":{ "12": "✦" }
+        },
+    "name": "Lupus",
+    "quadrant": "SQ3",
+    "right ascension": "15.3h",
+    "declination": "-45°",
+    "area": "333.7 sq.deg. (46th)",
+    "main stars": "9"
+}
