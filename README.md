@@ -5,8 +5,7 @@ A command line tool written in C++ that displays constellations.
 * [Description](https://github.com/Haruno19/starfetch#description)
 * [Demo visuals](https://github.com/Haruno19/starfetch#demo-visuals)
 * [Installation](https://github.com/Haruno19/starfetch#installation)
-    * [MacOS](https://github.com/Haruno19/starfetch#macos)
-    * [Others](https://github.com/Haruno19/starfetch#others)
+    * [Manual](https://github.com/Haruno19/starfetch#manual)
 * [Usage](https://github.com/Haruno19/starfetch#usage)
 * [Available constellations](https://github.com/Haruno19/starfetch#available-constellations)
 * [JSON Format](https://github.com/Haruno19/starfetch#json-format)
@@ -27,23 +26,14 @@ A command line tool written in C++ that displays constellations.
 ## Installation
 To install **starfetch**, run these commands:
 
-### MacOS
-```
-git clone https://github.com/Haruno19/starfetch
-cd starfetch
-make
-sudo make install_mac
-```
-Install directoy: ``/usr/local/opt/starfetch/``.
-
-### Others
+### Manual
 ```
 git clone https://github.com/Haruno19/starfetch
 cd starfetch
 make
 sudo make install
 ```
-Install directoy: ``/usr/local/starfetch/``.
+Install directoy: ``/usr/local/share/starfetch/``.
 
 ## Usage
 **starfetch** accepts parameters to tweak its behaviour:
