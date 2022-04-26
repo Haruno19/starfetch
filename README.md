@@ -35,6 +35,9 @@ sudo make install
 ```
 Install directoy: ``/usr/local/share/starfetch/``.
 
+Alternative versions:
+- [K1ngst0m](https://github.com/K1ngst0m/starfetch): starfetch doesn't depend on the files in `/usr/local/share/starfetch/`
+
 ## Usage
 **starfetch** accepts parameters to tweak its behaviour:
 ```
