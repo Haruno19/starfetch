@@ -1,5 +1,5 @@
 # starfetch
-A command line tool written in C++ that displays constellations.
+[starfetch](https://github.com/Haruno19/starfetch) but just one single executable and self-contained file without depend on res/ directory when running.
 
 ## Table of contents
 * [Description](https://github.com/Haruno19/starfetch#description)
@@ -28,12 +28,11 @@ To install **starfetch**, run these commands:
 
 ### Manual
 ```
-git clone https://github.com/Haruno19/starfetch
+git clone https://github.com/K1ngst0m/starfetch
 cd starfetch
 make
 sudo make install
 ```
-Install directoy: ``/usr/local/share/starfetch/``.
 
 ## Usage
 **starfetch** accepts parameters to tweak its behaviour:
@@ -66,6 +65,7 @@ taurus         bootes
 ursa_major     crux
 ursa_minor     corona_borealis
 lupus
+...
 ```
 I will add more and more constellations!
 
