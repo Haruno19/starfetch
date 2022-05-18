@@ -1,0 +1,22 @@
+{
+    "title": "────── ｌｙｒａ ──────",
+    "graph":
+        {
+            "line1": { },
+            "line2": { "12": "✦" },
+            "line3": { "16": "✧" },
+            "line4": { "12": "✦"},
+            "line5": { "7": "✦"},
+            "line6": { },
+            "line7": { },
+            "line8": { "11": "⊙" },
+            "line9": { "6": "✦" },
+            "line10": { }
+        },
+    "name": "Lyra",
+    "quadrant": "NQ4",
+    "right ascension": "18h 14m to 19h 28m",
+    "declination": "25.66° to 47.71°",
+    "area": "286 sq.deg. (52nd)",
+    "main stars": "5"
+}
