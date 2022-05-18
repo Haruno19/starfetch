@@ -68,7 +68,7 @@ capricorn      apus
 taurus         bootes
 ursa_major     crux
 ursa_minor     corona_borealis
-lupus
+lupus          lyra
 ```
 I will add more and more constellations!
 
@@ -142,6 +142,7 @@ Although relying on external libraries, no dependencies are needed to install st
 * Credits to John Southern for creating the JSON files for the ``gemini``, ``scorpio``, ``sagittarius``, ``aquarius``, ``ophiuchus`` and ``pisces`` constellations!  
 * Credits to [Hushm](https://github.com/HushmKun) for creating the JSON files for the ``antlia``, ``ara`` and ``apus`` constellations!
 * Credits to [kbHoward2](https://github.com/kbHoward2) for creating the JSON file for the ``lupus`` constellation!
+* Credits to [Vega Deftwing](https://github.com/VegaDeftwing) for creating the JSON file for the ``lyra`` constellation!
 
 ---- 
 ###### All data regarding the constellations is taken from Wikipedia.
