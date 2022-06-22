@@ -143,6 +143,7 @@ Although relying on external libraries, no dependencies are needed to install st
 * Credits to [Hushm](https://github.com/HushmKun) for creating the JSON files for the ``antlia``, ``ara`` and ``apus`` constellations!
 * Credits to [kbHoward2](https://github.com/kbHoward2) for creating the JSON file for the ``lupus`` constellation!
 * Credits to [Vega Deftwing](https://github.com/VegaDeftwing) for creating the JSON file for the ``lyra`` constellation!
+* Credits to [Nathan Richard](https://github.com/naTariks) for creating the JSON file for the ``monoceros`` constellation!
 
 ---- 
 ###### All data regarding the constellations is taken from Wikipedia.
