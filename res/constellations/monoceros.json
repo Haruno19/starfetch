@@ -1,0 +1,22 @@
+{
+    "title": "─ ｍｏｎｏｃｅｒｏｓ ─",
+    "graph":
+        {
+            "line1": { },
+            "line2": { },
+            "line3": { "19": "✦"},
+            "line4": { "20": "✦" },
+            "line5": { "17": "✦", "21": "✦"},
+            "line6": { "2": "✦", "12": "✦"},
+            "line7": { },
+            "line8": { },
+            "line9": { "6": "✦", "18": "✦", "21": "✦"},
+            "line10": { }
+        },
+    "name": "Monoceros",
+    "quadrant": "NQ2",
+    "right ascension": "7.15h",
+    "declination": "-5.74°",
+    "area": "482 sq.deg. (35th)",
+    "main stars": "4"
+}
