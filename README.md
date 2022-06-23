@@ -56,7 +56,7 @@ Examples:   starfetch -r
 
 ## Available constellations
 ```
-orion          gemini
+orion          gemini            monoceros
 aries          scorpio
 cancer         sagittarius
 cygnus         aquarius
