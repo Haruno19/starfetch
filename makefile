@@ -17,3 +17,6 @@ install: starfetch
 	cp -rf starfetch ${INSTALL_DIR}/starfetch/starfetch
 	rm -rf ${BIN_DIR}/starfetch
 	ln -s ${INSTALL_DIR}/starfetch/starfetch ${BIN_DIR}/starfetch
+uninstall:
+	rm -rf ${INSTALL_DIR}/starfetch
+	unlink ${BIN_DIR}/starfetch
