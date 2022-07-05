@@ -1,0 +1,22 @@
+{
+    "title": " ｃｎｓ ｖｅｎｔａｃｉ",
+    "graph":
+        {
+            "line1": { },
+            "line2": { "20": "✦" },
+            "line3": { "11": "✦" },
+            "line4": { },
+            "line5": { "17": "✦" },
+            "line6": { "7": "✦" },
+            "line7": { },
+            "line8": { "5": "✦", "14": "✦" },
+            "line9": { "2": "✦", "10": "✦" },
+            "line10": { }
+        },
+    "name": "Canes Venatici",
+    "quadrant": "NQ3",
+    "right ascension": "12h 06.2m to 14h 07.3m",
+    "declination": "+27.84° to +52.36°",
+    "area": "465 sq. deg. (38th)",
+    "main stars": "2"
+}
