@@ -144,7 +144,7 @@ Although relying on external libraries, no dependencies are needed to install st
 * Credits to [kbHoward2](https://github.com/kbHoward2) for creating the JSON file for the ``lupus`` constellation!
 * Credits to [Vega Deftwing](https://github.com/VegaDeftwing) for creating the JSON file for the ``lyra`` constellation!
 * Credits to [Nathan Richard](https://github.com/naTariks) for creating the JSON file for the ``monoceros`` constellation!
-* Credits to [Andread Grafen](https://github.com/andreasgrafen) for creating the JSON file for the ``canes venatici`` constellation!
+* Credits to [Andreas Grafen](https://github.com/andreasgrafen) for creating the JSON file for the ``canes venatici`` constellation!
 
 ---- 
 ###### All data regarding the constellations is taken from Wikipedia.
