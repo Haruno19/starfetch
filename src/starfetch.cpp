@@ -2,10 +2,10 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
-#include <stdlib.h>
-#include <stdio.h>
+#include <cstdlib>
+#include <cstdio>
 #include <string>
-#include <time.h>
+#include <ctime>
 #include <filesystem>
 #include "include/json.hpp"
 
@@ -34,10 +34,12 @@ int main(int argc, char *argv[])
         switch(argv[1][1])  //gets the time of the argument (the 'n' in "-n")
         {
             case 'n':
+            {
                 if(argc < 3) Error(" ", 0); //if the user requested a '-n' argument but didn't provide a name, an error occours
                 pathc += "constellations/"; //updating the path to the constellations folder
                 pathc += argv[2];   //adding the name of the requested constellation to the path
                 pathc += ".json";
+            }
                 break;
             case 'h':   
                 Help();
@@ -47,6 +49,7 @@ int main(int argc, char *argv[])
                 break;
             case 'l':
                 PrintList();
+                break;
             default:
                 Error(argv[1], 1);  //if the reqeusted option isn't recognized, an error occours
         }
