@@ -30,7 +30,7 @@ To install **starfetch**, run these commands:
 ```
 git clone https://github.com/Haruno19/starfetch
 cd starfetch
-make
+make -j8 # 8 cores/threads to use in parallel compile
 sudo make install
 ```
 Install directoy: ``/usr/local/share/starfetch/``.
