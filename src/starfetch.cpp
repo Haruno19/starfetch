@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
         }
 
     PrintConst(pathc);  //prints the constellation
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 void PrintConst(string pathc)
@@ -129,7 +129,6 @@ string RandomConst()
 
 void PrintList()
 {
-    size_t pos;
     string s;
 
     cout << "✦ \e[1;37mavailable constellations\e[0m: " << endl; 
