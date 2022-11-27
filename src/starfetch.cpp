@@ -25,7 +25,13 @@ void Help();    //prints out the help message
 #else
     string path = "/usr/local/starfetch/res/";
 #endif*/
-string path = "/usr/local/share/starfetch/";
+#ifdef _WIN32
+  string path = "C:\\starfetch\\";
+  string SEP = "\\";
+#else
+  string path = "/usr/local/share/starfetch/";
+  string SEP = "/";
+#endif // _WIN32
 
 int main(int argc, char *argv[])
 {
@@ -38,7 +44,7 @@ int main(int argc, char *argv[])
             case 'n':
             {
                 if(argc < 3) Error(" ", 0); //if the user requested a '-n' argument but didn't provide a name, an error occours
-                pathc += "constellations/"; //updating the path to the constellations folder
+                pathc += "constellations" + SEP; //updating the path to the constellations folder
                 pathc += argv[2];   //adding the name of the requested constellation to the path
                 pathc += ".json";
             }
@@ -119,9 +125,9 @@ string RandomConst()
     
     //SHOULD BE IMPROVED IN THE FUTURE
     //gets every constellation name in the "constellation/" directory, and exits when two randomly generated numbers are equal, resulting in picking a random file
-    for (const auto & entry : filesystem::directory_iterator(path+"constellations/"))
+    for (const auto & entry : filesystem::directory_iterator(path+"constellations" + SEP))
     {
-        pos = entry.path().u8string().find("constellations/");    
+        pos = entry.path().u8string().find("constellations" + SEP);    
         s = entry.path().u8string().substr(pos);
         if(s != "constellations/.DS_Store" && udist(rd) == udist(rd))
             break;
@@ -136,13 +142,13 @@ void PrintList()
 
     cout << "✦ \e[1;37mavailable constellations\e[0m: " << endl; 
     //prints every constellation name from the files name in the "constellations/" directory
-    for (const auto & entry : filesystem::directory_iterator(path+"constellations/"))
+    for (const auto & entry : filesystem::directory_iterator(path+"constellations" + SEP))
     {
-        s = entry.path().u8string().substr(entry.path().u8string().find("constellations/")+15); //from "/usr/local/opt/starfetch/re/constellations/xxxxxx" to "xxxxxx"
+        s = entry.path().u8string().substr(entry.path().u8string().find("constellations" + SEP)+15); //from "/usr/local/opt/starfetch/re/constellations/xxxxxx" to "xxxxxx"
         s = s.substr(0, s.length()-5);
         if(s != ".DS_")    cout << s << endl;
     }  
-    exit(0);
+    exit(EXIT_SUCCESS);
 }
 
 void Error(string err, int code)
