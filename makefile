@@ -1,13 +1,13 @@
 SRC = src/starfetch.cpp
-CC = g++
-CFLAGS = -std=c++17
+#CC = g++
+CFLAGS = -Wall -Wextra -O2 -std=c++17 -pipe -pedantic -Wundef -Wshadow -W -Wwrite-strings -Wcast-align -Wstrict-overflow=5 -Wconversion -Wpointer-arith -Wformat=2 -Wsign-compare -Wendif-labels -Wredundant-decls -Winit-self
 INSTALL_DIR = /usr/local/share
 BIN_DIR = /usr/local/bin
 
 all: starfetch
 
 starfetch: 
-	${CC} ${CFLAGS} ${SRC} -o starfetch
+	${CXX} ${CFLAGS} ${SRC} -o starfetch
 
 install: starfetch
 	rm -rf ${INSTALL_DIR}/starfetch
@@ -20,3 +20,8 @@ install: starfetch
 uninstall:
 	rm -rf ${INSTALL_DIR}/starfetch
 	unlink ${BIN_DIR}/starfetch
+
+clean:
+	rm -rf starfetch
+
+.PHONY: all starfetch install uninstall clean
