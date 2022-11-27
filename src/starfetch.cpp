@@ -14,9 +14,9 @@
 using namespace std;
 using json = nlohmann::json;
 
-void PrintConst(string pathc);  //formats the template file with the requested data and prints out the constellation info   
+static inline void PrintConst(string &pathc);  //formats the template file with the requested data and prints out the constellation info   
 string RandomConst();   //select a random constellation from the available ones
-void PrintList();   //prints out the list of the available constellations
+static inline void PrintList();   //prints out the list of the available constellations
 void Error(string err, int type);   //shows an error message
 void Help();    //prints out the help message
 
@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
     return EXIT_SUCCESS;
 }
 
-void PrintConst(string pathc)
+static inline void PrintConst(string &pathc)
 {
     ifstream c(pathc);  //opens the file containing constellation info
     ifstream f(path+"template");    //opens the output template file
@@ -77,7 +77,7 @@ void PrintConst(string pathc)
     if(f.is_open()) 
     {
         strStream << f.rdbuf(); //read the template
-        s = strStream.str();    //converts it to a tring
+        s = strStream.str();    //converts it to a string
         replace(s.begin(), s.end(), '^', '\033');   //replace '^' with the '\e' to print bold/colored text
         f.close();  //closes the template
     }
@@ -136,7 +136,7 @@ string RandomConst()
     return s;
 }
 
-void PrintList()
+static inline void PrintList()
 {
     string s;
 
@@ -144,7 +144,7 @@ void PrintList()
     //prints every constellation name from the files name in the "constellations/" directory
     for (const auto & entry : filesystem::directory_iterator(path+"constellations" + SEP))
     {
-        s = entry.path().u8string().substr(entry.path().u8string().find("constellations" + SEP)+15); //from "/usr/local/opt/starfetch/re/constellations/xxxxxx" to "xxxxxx"
+        s = entry.path().u8string().substr(entry.path().u8string().find("constellations" + SEP)+15); //from "/usr/local/opt/starfetch/res/constellations/xxxxxx" to "xxxxxx"
         s = s.substr(0, s.length()-5);
         if(s != ".DS_")    cout << s << endl;
     }  
