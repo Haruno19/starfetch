@@ -210,7 +210,7 @@ Although relying on external libraries, no dependencies are needed to install st
 * Credits to [Nathan Richard](https://github.com/naTariks) for creating the JSON file for the ``monoceros`` constellation!
 * Credits to [Andreas Grafen](https://github.com/andreasgrafen) for creating the JSON file for the ``canes venatici`` constellation!  
 
-Huge thanks to [su8](https://github.com/su8) for optimizing and polishing starfetch's code!
+Very huge thanks to [su8](https://github.com/su8) for optimizing and polishing starfetch's code, and adding compatibilty for Windows systems and the related detailed documentation!
 
 
 ---- 
