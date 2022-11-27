@@ -7,6 +7,8 @@
 #include <string>
 #include <ctime>
 #include <filesystem>
+#include <random>
+//#include <unistd.h> for getpid()
 #include "include/json.hpp"
 
 using namespace std;
@@ -109,8 +111,9 @@ void PrintConst(string pathc)
 
 string RandomConst()
 {
-    srand(time(NULL));
-    
+    //srand(static_cast<unsigned int>(time(NULL)) ^ static_cast<unsigned int>(getpid()));
+    std::random_device rd;
+    std::uniform_int_distribution<int> udist(0, 11);
     size_t pos;
     string s;
     
@@ -120,7 +123,7 @@ string RandomConst()
     {
         pos = entry.path().u8string().find("constellations/");    
         s = entry.path().u8string().substr(pos);
-        if(s != "constellations/.DS_Store" && rand()%11 == rand()%11)
+        if(s != "constellations/.DS_Store" && udist(rd) == udist(rd))
             break;
     }
 
@@ -164,5 +167,5 @@ void Help()
     ifstream f(path + "help_message.txt");
     cout << f.rdbuf();
     f.close();
-    exit(0);
+    exit(EXIT_SUCCESS);
 }
