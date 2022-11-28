@@ -15,10 +15,10 @@ using namespace std;
 using json = nlohmann::json;
 
 static inline void PrintConst(string &pathc);  //formats the template file with the requested data and prints out the constellation info   
-string RandomConst();   //select a random constellation from the available ones
+static string RandomConst();   //select a random constellation from the available ones
 static inline void PrintList();   //prints out the list of the available constellations
-void Error(string err, int type);   //shows an error message
-void Help();    //prints out the help message
+static void Error(const char *err, int type);   //shows an error message
+static void Help();    //prints out the help message
 
 /*#ifdef __APPLE__    //selection the right working path based on the OS type
     string path = "/usr/local/opt/starfetch/res/";
@@ -115,7 +115,7 @@ static inline void PrintConst(string &pathc)
         Error("", 2);
 }
 
-string RandomConst()
+static string RandomConst()
 {
     //srand(static_cast<unsigned int>(time(NULL)) ^ static_cast<unsigned int>(getpid()));
     std::random_device rd;
@@ -151,7 +151,7 @@ static inline void PrintList()
     exit(EXIT_SUCCESS);
 }
 
-void Error(string err, int code)
+static void Error(const char *err, int code)
 {
     switch(code)    //each error has a specific code
     {
@@ -168,7 +168,7 @@ void Error(string err, int code)
     Help(); //after any error occours, the help message is shown
 }
 
-void Help()
+static void Help()
 {
     ifstream f(path + "help_message.txt");
     cout << f.rdbuf();
