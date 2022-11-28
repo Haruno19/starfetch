@@ -163,6 +163,7 @@ static void Error(const char *err, int code)
             break;
         case 2: //2 for the invalid constellation name
             cout << "Error: the constellation you asked for isn't recognized." << endl << endl;
+            break;
     }
     
     Help(); //after any error occours, the help message is shown
