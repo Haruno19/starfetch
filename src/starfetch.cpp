@@ -25,6 +25,7 @@ static void Help();    //prints out the help message
 #else
     string path = "/usr/local/starfetch/res/";
 #endif*/
+
 #ifdef _WIN32
   string path = "C:\\starfetch\\";
   string SEP = "\\";
@@ -60,6 +61,7 @@ int main(int argc, char *argv[])
                 break;
             default:
                 Error(argv[1], 1);  //if the reqeusted option isn't recognized, an error occours
+                break;
         }
 
     PrintConst(pathc);  //prints the constellation
