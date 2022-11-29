@@ -69,7 +69,7 @@ MainWindow::MainWindow(QWidget *parent)
     p.setColor(QPalette::Text, Qt::green);
     ui->textEdit->setPalette(p);
 
-    ui->textEdit->setText(static_cast<QString>("Type 'help' to see the available constellations"));
+    ui->textEdit->setText(static_cast<QString>("Type 'help' to see the available command line options"));
 
     ui->lineEdit->setCompleter(completer);
     completer->popup()->setStyleSheet("background-color:rgb(54, 57, 63); color:white;");
