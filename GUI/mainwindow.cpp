@@ -188,6 +188,7 @@ static inline void PrintConst(string &pathc)
             s = std::regex_replace(s, std::regex("1;37m"), "");
             s = std::regex_replace(s, std::regex("0m"), "");
             s = std::regex_replace(s, std::regex("\\["), "");
+            s = std::regex_replace(s, std::regex("│"), "");
         }
 
         UI->textEdit->setText(static_cast<QString>(s.c_str()));  //prints the output
