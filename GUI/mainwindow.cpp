@@ -20,7 +20,6 @@
 #include "include/json.hpp"
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include "qlineedit.h"
 
 using namespace std;
 using json = nlohmann::json;
@@ -175,8 +174,11 @@ static inline void PrintConst(string &pathc)
                 if(j["graph"]["line"+to_string(i)].find(to_string(k)) != j["graph"]["line"+to_string(i)].end())
                     l+=j["graph"]["line"+to_string(i)][to_string(k)].get<string>(); //put the star (which is stored into the JSON fine, might change this in the future)
                 else
-                    l+=" "; //put a space
-
+                    for (int z=1;z<3;z++)
+                        l+=" "; //put a space
+            
+            for (int x=1;x<22;x++)
+                l+=" ";
             //insert the line into the template
             s.replace(s.find("%"+to_string(i)), string("%"+to_string(i)).size(), l);
         }
