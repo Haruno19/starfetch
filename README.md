@@ -24,6 +24,10 @@ A command line tool written in C++ that displays constellations.
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/61376940/161760086-2033863a-e132-4f28-a3ee-d7bd61c963dc.gif)
 <img width="1375" alt="1" src="https://user-images.githubusercontent.com/61376940/161760417-8ba116fc-71a6-4d0c-8219-1b76a4121ace.png">
 
+## Demo (GUI)
+
+![Screenshot](https://user-images.githubusercontent.com/29376083/205070825-6796d8b8-9869-44a9-a53d-cb94ac0e55c4.png)
+
 ## Installation
 
 ### Manual (UNIX systems)
