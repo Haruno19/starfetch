@@ -5,7 +5,8 @@ A command line tool written in C++ that displays constellations.
 * [Description](https://github.com/Haruno19/starfetch#description)
 * [Demo visuals](https://github.com/Haruno19/starfetch#demo-visuals)
 * [Installation](https://github.com/Haruno19/starfetch#installation)
-    * [Manual](https://github.com/Haruno19/starfetch#manual)
+    * [Manual (UNIX systems)](https://github.com/Haruno19/starfetch#manual)
+    * [Manual (Windows)](https://github.com/Haruno19/starfetch#windows)
 * [Usage](https://github.com/Haruno19/starfetch#usage)
 * [Available constellations](https://github.com/Haruno19/starfetch#available-constellations)
 * [JSON Format](https://github.com/Haruno19/starfetch#json-format)
@@ -35,7 +36,7 @@ sudo make install
 ```
 Install directoy: ``/usr/local/share/starfetch/``.
 
-### Windows
+### Manual (Windows)
 
 Compilation process on Windows relies on [MingW](https://www.mingw-w64.org). Follow the instructions to properly set a C/C++ MinGW developing environment within the [Visual Studio Code](https://code.visualstudio.com/download) editor. 
 - Download [MingW](https://github.com/niXman/mingw-builds-binaries/releases);
