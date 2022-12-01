@@ -30,12 +30,6 @@ static inline void PrintList();   //prints out the list of the available constel
 static void Error(string &err, int type);   //shows an error message
 static void Help();    //prints out the help message
 
-/*#ifdef __APPLE__    //selection the right working path based on the OS type
-    string path = "/usr/local/opt/starfetch/res/";
-#else
-    string path = "/usr/local/starfetch/res/";
-#endif*/
-
 #ifdef _WIN32
   string path = "C:\\starfetch\\";
   string SEP = "\\";
@@ -46,7 +40,7 @@ static void Help();    //prints out the help message
 
 static QString oldText = "";
 static QStringList wordList = {
-    "help", "-r", "-l", "-h", "random", "-n antlia",
+    "help", "-r", "-l", "-h", "random", "list", "-n antlia",
     "-n apus", "-n aquarius", "-n ara", "-n aries", "-n bootes", "-n cancer", "-n canes_venatici", "-n cassiopeia",
     "-n corona_borealis", "-n crux", "-n cygnus", "-n gemini", "-n leo", "-n libra", "-n lupus", "-n lyra",
     "-n monoceros", "-n ophiuchus", "-n orion", "-n pisces", "-n sagittarius", "-n scorpio", "-n taurus", "-n ursa_major",
@@ -174,7 +168,7 @@ static inline void PrintConst(string &pathc)
                 if(j["graph"]["line"+to_string(i)].find(to_string(k)) != j["graph"]["line"+to_string(i)].end())
                     l+=j["graph"]["line"+to_string(i)][to_string(k)].get<string>(); //put the star (which is stored into the JSON fine, might change this in the future)
                 else
-                    for (int z=1;z<3;z++)
+                    for (int z=1;z<4;z++)
                         l+=" "; //put a space
             
             for (int x=1;x<22;x++)
@@ -191,6 +185,12 @@ static inline void PrintConst(string &pathc)
             s = std::regex_replace(s, std::regex("0m"), "");
             s = std::regex_replace(s, std::regex("\\["), "");
             s = std::regex_replace(s, std::regex("│"), "");
+            s = std::regex_replace(s, std::regex("──"), "");
+            s = std::regex_replace(s, std::regex("┘"), "");
+            s = std::regex_replace(s, std::regex("└"), "");
+            s = std::regex_replace(s, std::regex("┌"), "");
+            s = std::regex_replace(s, std::regex("┐"), "");
+            s = std::regex_replace(s, std::regex("─"), "");
         }
 
         UI->textEdit->setText(static_cast<QString>(s.c_str()));  //prints the output
