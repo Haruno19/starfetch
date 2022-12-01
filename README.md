@@ -18,15 +18,14 @@ A command line tool written in C++ that displays constellations.
 ## Description  
 **starfetch** is a tool that prints out a scheme of a given constellation and some information about it: its _quadrant_, its _right ascension_, its _declination_, ita _area_ and its _main stars number_.
 
-## Demo visuals
+## Demo (CLI) 
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/61376940/161760086-2033863a-e132-4f28-a3ee-d7bd61c963dc.gif)
 <img width="1375" alt="1" src="https://user-images.githubusercontent.com/61376940/161760417-8ba116fc-71a6-4d0c-8219-1b76a4121ace.png">
 
 ## Installation
-To install **starfetch**, run these commands if on Linux/*BSD/Apple:
 
-### Manual
+### Manual (UNIX systems)
 
 ```bash
 git clone https://github.com/Haruno19/starfetch
@@ -38,11 +37,14 @@ Install directoy: ``/usr/local/share/starfetch/``.
 
 ### Windows
 
-Tested with [Visual Studio Code Editor](https://code.visualstudio.com/download), but you need to install [MingW](https://github.com/niXman/mingw-builds-binaries/releases/download/12.2.0-rt_v10-rev0/x86_64-12.2.0-release-posix-seh-rt_v10-rev0.7z), once downloaded extract it to **C:\MingW**, then re-open [Visual Studio Code Editor](https://code.visualstudio.com/download), you might want to install C\C++ extensions if you plan to write C\C++ code with the editor. If you plan to contribute to this project go to **File->Preferences->Settings** and type to search for **cppStandard** and set it to c17 to both C++ and C.
-
-I use **One Monokai** theme for the [VScode Editor](https://code.visualstudio.com/download)
-
-In [Visual Studio Code Editor](https://code.visualstudio.com/download), go to **Terminal->Configure Tasks...->Create tasks.json from template** and copy and paste this into it:
+Compilation process on Windows relies on [MingW](https://www.mingw-w64.org). Follow the instructions to properly set a C/C++ MinGW developing environment within the [Visual Studio Code](https://code.visualstudio.com/download) editor. 
+- Download [MingW](https://github.com/niXman/mingw-builds-binaries/releases);
+- Once finished downloading, extract it to the following path: `C:\MingW`;
+- Launch [Visual Studio Code](https://code.visualstudio.com/download)
+- You might want to install the [C\C++ Extensions](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools); 
+- Navigate to `File > Preferences > Settings` and type to search for `cppStandard`;
+- Set the field to `c17` for both C++ and C.
+- Navigate to `Terminal > Configure Tasks... > Create tasks.json from template`, then copy and paste the following segment into your task file:
 
 ```json
 {
@@ -94,10 +96,10 @@ In [Visual Studio Code Editor](https://code.visualstudio.com/download), go to **
 ]
 }
 ```
-
-You have to move all files from **starfetch/res** to **C:\\starfetch**.
-
-To compile the program press **CTRL** + **SHIFT** + **B** , wait until it compiles, after that press **CTRL** + **\`** and paste this `cp -r C:\Users\YOUR_USERNAME_GOES_HERE\Desktop\starfetch.exe C:\MingW\bin;cd C:\MingW\bin;.\starfetch.exe`
+- Clone strafetch repository and move all files from `starfetch/res` to `C:\starfetch`;
+- Return to Visual Studio Code and compile the program pressing `CTRL + SHIFT + B`;
+- After the compilation  has finisheda, press `CTRL + \` and run the following command:  
+`cp -r C:\Users\[USERNAME]\Desktop\starfetch.exe C:\MingW\bin; cd C:\MingW\bin; .\starfetch.exe`
 
 Alternative versions:
 - [K1ngst0m](https://github.com/K1ngst0m/starfetch): starfetch doesn't depend on the files in `/usr/local/share/starfetch/`
@@ -210,7 +212,7 @@ Although relying on external libraries, no dependencies are needed to install st
 * Credits to [Nathan Richard](https://github.com/naTariks) for creating the JSON file for the ``monoceros`` constellation!
 * Credits to [Andreas Grafen](https://github.com/andreasgrafen) for creating the JSON file for the ``canes venatici`` constellation!  
 
-Very huge thanks to [su8](https://github.com/su8) for optimizing and polishing starfetch's code, and adding compatibilty for Windows systems and the related detailed documentation!
+Very huge thanks to [su8](https://github.com/su8) for optimizing and polishing starfetch's code, adding compatibilty for Windows systems and the related detailed documentation, and developing the graphical version of starfetch! 
 
 
 ---- 
