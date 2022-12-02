@@ -11,7 +11,9 @@ You need to install the CLI version of **starfetch** first, so all .json files t
 If on **Linux/\*BSD/Apple** compile with:
 
 ```bash
-cmake .
+mkdir -p build
+cmake -B build .
+cd build
 make -j8 # 8 cores/threads to use in parallel compile
 sudo make install
 ```

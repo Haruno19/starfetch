@@ -17,7 +17,7 @@ A command line tool written in C++ that displays constellations.
 ---
 
 ## Description  
-**starfetch** is a tool that prints out a scheme of a given constellation and some information about it: its _quadrant_, its _right ascension_, its _declination_, ita _area_ and its _main stars number_.
+**starfetch** is a tool that prints out a scheme of a given constellation and some information about it: it's _quadrant_, it's _right ascension_, it's _declination_, it's _area_ and it's _main stars number_.
 
 ## Demo (CLI) 
 
@@ -103,14 +103,14 @@ Compilation process on Windows relies on [MingW](https://www.mingw-w64.org). Fol
 ```
 - Clone strafetch repository and move all files from `starfetch/res` to `C:\starfetch`;
 - Return to Visual Studio Code and compile the program pressing `CTRL + SHIFT + B`;
-- After the compilation  has finisheda, press `CTRL + \` and run the following command:  
+- After the compilation  has finisheda, press `CTRL + \`` and run the following command:  
 `cp -r C:\Users\[USERNAME]\Desktop\starfetch.exe C:\MingW\bin; cd C:\MingW\bin; .\starfetch.exe`
 
 Alternative versions:
 - [K1ngst0m](https://github.com/K1ngst0m/starfetch): starfetch doesn't depend on the files in `/usr/local/share/starfetch/`
 
 ## Usage
-**starfetch** accepts parameters to tweak its behaviour:
+**starfetch** accepts parameters to tweak it's behaviour:
 ```
 starfetch [OPTION] [CONSTELLATION NAME]
     -h      Prints this help message.
