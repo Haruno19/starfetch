@@ -17,7 +17,7 @@ A command line tool written in C++ that displays constellations.
 ---
 
 ## Description  
-**starfetch** is a tool that prints out a scheme of a given constellation and some information about it: it's _quadrant_, it's _right ascension_, it's _declination_, it's _area_ and it's _main stars number_.
+**starfetch** is a tool that prints out a scheme of a given constellation and some information about it: its _quadrant_, its _right ascension_, its _declination_, its _area_ and its _main stars number_.
 
 ## Demo (CLI) 
 
@@ -110,7 +110,7 @@ Alternative versions:
 - [K1ngst0m](https://github.com/K1ngst0m/starfetch): starfetch doesn't depend on the files in `/usr/local/share/starfetch/`
 
 ## Usage
-**starfetch** accepts parameters to tweak it's behaviour:
+**starfetch** accepts parameters to tweak its behaviour:
 ```
 starfetch [OPTION] [CONSTELLATION NAME]
     -h      Prints this help message.
