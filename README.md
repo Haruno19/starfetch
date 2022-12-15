@@ -103,8 +103,8 @@ Compilation process on Windows relies on [MingW](https://www.mingw-w64.org). Fol
 ```
 - Clone strafetch repository and move all files from `starfetch/res` to `C:\starfetch`;
 - Return to Visual Studio Code and compile the program pressing `CTRL + SHIFT + B`;
-- After the compilation  has finisheda, press `CTRL + \`` and run the following command:  
-`cp -r C:\Users\[USERNAME]\Desktop\starfetch.exe C:\MingW\bin; cd C:\MingW\bin; .\starfetch.exe`
+- After the compilation  has finisheda, press ```CTRL + \` ``` and run the following commands:  
+`cp -r C:\Users\[USERNAME]\Desktop\starfetch.exe`, `C:\MingW\bin; cd C:\MingW\bin`, `.\starfetch.exe`
 
 Alternative versions:
 - [K1ngst0m](https://github.com/K1ngst0m/starfetch): starfetch doesn't depend on the files in `/usr/local/share/starfetch/`
