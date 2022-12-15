@@ -103,7 +103,7 @@ static inline void PrintConst(string &pathc)
             for(int k=1;k<=22;k++)  //for each of the columns of the graph (22)
                 //if the JSON file specifies a star at position k
                 if(j["graph"]["line"+to_string(i)].find(to_string(k)) != j["graph"]["line"+to_string(i)].end())
-                    l+=j["graph"]["line"+to_string(i)][to_string(k)].get<string>(); //put the star (which is stored into the JSON fine, might change this in the future)
+                    l+="\033[1;36m" + j["graph"]["line"+to_string(i)][to_string(k)].get<string>() + "\033[0;0m"; //put the star (which is stored into the JSON fine, might change this in the future)
                 else
                     l+=" "; //put a space
             
