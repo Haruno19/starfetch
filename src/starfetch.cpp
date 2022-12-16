@@ -9,6 +9,7 @@
 #include <ctime>
 #include <filesystem>
 #include <random>
+#include <regex>
 //#include <unistd.h> for getpid()
 #include "include/json.hpp"
 
@@ -149,6 +150,7 @@ static inline void PrintConst(string &pathc)
             
             //insert the line into the template
             s.replace(s.find("%"+to_string(i)), string("%"+to_string(i)).size(), l);
+            s = std::regex_replace(s, std::regex("requestedColor"), REQUESTED_COLOR);
         }
 
         c.close();
