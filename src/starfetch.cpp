@@ -4,10 +4,12 @@
 #include <algorithm>
 #include <cstdlib>
 #include <cstdio>
+#include <cstring>
 #include <string>
 #include <ctime>
 #include <filesystem>
 #include <random>
+#include <regex>
 //#include <unistd.h> for getpid()
 #include "include/json.hpp"
 
@@ -20,12 +22,6 @@ static inline void PrintList();   //prints out the list of the available constel
 static void Error(const char *err, int type);   //shows an error message
 static void Help();    //prints out the help message
 
-/*#ifdef __APPLE__    //selection the right working path based on the OS type
-    string path = "/usr/local/opt/starfetch/res/";
-#else
-    string path = "/usr/local/starfetch/res/";
-#endif*/
-
 #ifdef _WIN32
   string path = "C:\\starfetch\\";
   string SEP = "\\";
@@ -33,6 +29,8 @@ static void Help();    //prints out the help message
   string path = "/usr/local/share/starfetch/";
   string SEP = "/";
 #endif // _WIN32
+
+string REQUESTED_COLOR = "\033[1;36m"; // cyan color
 
 int main(int argc, char *argv[])
 {
@@ -58,6 +56,49 @@ int main(int argc, char *argv[])
                 break;
             case 'l':
                 PrintList();
+                break;
+            case 'c':
+            {
+                if (argc == 2 || argc == 3 || argc == 4)
+                {
+                    cout << "Available colors are: black, white, cyan, magenta, yellow, red, blue" << endl;
+                    return EXIT_SUCCESS;
+                }
+                else
+                {
+                    pathc += "constellations" + SEP; //updating the path to the constellations folder
+                    pathc += argv[4];   //adding the name of the requested constellation to the path
+                    pathc += ".json";
+                    if (!strcmp(argv[2], "black"))
+                    {
+                        REQUESTED_COLOR = "\033[1;30m";
+                    }
+                    else if (!strcmp(argv[2], "white"))
+                    {
+                        REQUESTED_COLOR = "\033[1;37m";
+                    }
+                    else if (!strcmp(argv[2], "cyan"))
+                    {
+                        REQUESTED_COLOR = "\033[1;36m";
+                    }
+                    else if (!strcmp(argv[2], "magenta"))
+                    {
+                        REQUESTED_COLOR = "\033[1;35m";
+                    }
+                    else if (!strcmp(argv[2], "yellow"))
+                    {
+                        REQUESTED_COLOR = "\033[1;33m";
+                    }
+                    else if (!strcmp(argv[2], "red"))
+                    {
+                        REQUESTED_COLOR = "\033[1;31m";
+                    }
+                    else if (!strcmp(argv[2], "blue"))
+                    {
+                        REQUESTED_COLOR = "\033[1;34m";
+                    }
+                }
+            }
                 break;
             default:
                 Error(argv[1], 1);  //if the reqeusted option isn't recognized, an error occours
@@ -103,12 +144,13 @@ static inline void PrintConst(string &pathc)
             for(int k=1;k<=22;k++)  //for each of the columns of the graph (22)
                 //if the JSON file specifies a star at position k
                 if(j["graph"]["line"+to_string(i)].find(to_string(k)) != j["graph"]["line"+to_string(i)].end())
-                    l+="\033[1;36m" + j["graph"]["line"+to_string(i)][to_string(k)].get<string>() + "\033[0;0m"; //put the star (which is stored into the JSON fine, might change this in the future)
+                    l+=REQUESTED_COLOR + j["graph"]["line"+to_string(i)][to_string(k)].get<string>() + "\033[0;0m"; //put the star (which is stored into the JSON fine, might change this in the future)
                 else
                     l+=" "; //put a space
             
             //insert the line into the template
             s.replace(s.find("%"+to_string(i)), string("%"+to_string(i)).size(), l);
+            s = std::regex_replace(s, std::regex("requestedColor"), REQUESTED_COLOR);
         }
 
         c.close();
