@@ -24,14 +24,14 @@ static void Error(const char *err, int type);   //shows an error message
 static void Help();    //prints out the help message
 
 #ifdef _WIN32
-  string path = "C:\\starfetch\\";
-  string SEP = "\\";
+  static string path = "C:\\starfetch\\";
+  static string SEP = "\\";
 #else
-  string path = "/usr/local/share/starfetch/";
-  string SEP = "/";
+  static string path = "/usr/local/share/starfetch/";
+  static string SEP = "/";
 #endif // _WIN32
 
-string REQUESTED_COLOR = "\033[1;36m"; // cyan color
+static string REQUESTED_COLOR = "\033[1;36m"; // cyan color
 
 int main(int argc, char *argv[])
 {
@@ -68,6 +68,13 @@ int main(int argc, char *argv[])
                 else if (argc == 3 || argc == 4)
                 {
                     setColor(argv[2]);
+
+                    if (argc == 4 && !strcmp(argv[3], "-l"))
+                    {
+                        PrintList();
+                        return EXIT_SUCCESS;
+                    }
+
                     pathc += RandomConst();
                 }
                 else
@@ -201,7 +208,7 @@ static inline void PrintList()
     {
         s = entry.path().u8string().substr(entry.path().u8string().find("constellations" + SEP)+15); //from "/usr/local/opt/starfetch/res/constellations/xxxxxx" to "xxxxxx"
         s = s.substr(0, s.length()-5);
-        if(s != ".DS_")    cout << s << endl;
+        if(s != ".DS_")    cout << REQUESTED_COLOR + s + "\033[0;0m" << endl;
     }  
     exit(EXIT_SUCCESS);
 }
