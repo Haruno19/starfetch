@@ -16,6 +16,7 @@
 using namespace std;
 using json = nlohmann::json;
 
+static void setColor(const char *str);
 static inline void PrintConst(string &pathc);  //formats the template file with the requested data and prints out the constellation info   
 static string RandomConst();   //select a random constellation from the available ones
 static inline void PrintList();   //prints out the list of the available constellations
@@ -23,14 +24,14 @@ static void Error(const char *err, int type);   //shows an error message
 static void Help();    //prints out the help message
 
 #ifdef _WIN32
-  string path = "C:\\starfetch\\";
-  string SEP = "\\";
+  static string path = "C:\\starfetch\\";
+  static string SEP = "\\";
 #else
-  string path = "/usr/local/share/starfetch/";
-  string SEP = "/";
+  static string path = "/usr/local/share/starfetch/";
+  static string SEP = "/";
 #endif // _WIN32
 
-string REQUESTED_COLOR = "\033[1;36m"; // cyan color
+static string REQUESTED_COLOR = "\033[1;36m"; // cyan color
 
 int main(int argc, char *argv[])
 {
@@ -59,44 +60,29 @@ int main(int argc, char *argv[])
                 break;
             case 'c':
             {
-                if (argc == 2 || argc == 3 || argc == 4)
+                if (argc == 2)
                 {
                     cout << "Available colors are: black, white, cyan, magenta, yellow, red, blue" << endl;
                     return EXIT_SUCCESS;
+                }
+                else if (argc == 3 || argc == 4)
+                {
+                    setColor(argv[2]);
+
+                    if (argc == 4 && !strcmp(argv[3], "-l"))
+                    {
+                        PrintList();
+                        return EXIT_SUCCESS;
+                    }
+
+                    pathc += RandomConst();
                 }
                 else
                 {
                     pathc += "constellations" + SEP; //updating the path to the constellations folder
                     pathc += argv[4];   //adding the name of the requested constellation to the path
                     pathc += ".json";
-                    if (!strcmp(argv[2], "black"))
-                    {
-                        REQUESTED_COLOR = "\033[1;30m";
-                    }
-                    else if (!strcmp(argv[2], "white"))
-                    {
-                        REQUESTED_COLOR = "\033[1;37m";
-                    }
-                    else if (!strcmp(argv[2], "cyan"))
-                    {
-                        REQUESTED_COLOR = "\033[1;36m";
-                    }
-                    else if (!strcmp(argv[2], "magenta"))
-                    {
-                        REQUESTED_COLOR = "\033[1;35m";
-                    }
-                    else if (!strcmp(argv[2], "yellow"))
-                    {
-                        REQUESTED_COLOR = "\033[1;33m";
-                    }
-                    else if (!strcmp(argv[2], "red"))
-                    {
-                        REQUESTED_COLOR = "\033[1;31m";
-                    }
-                    else if (!strcmp(argv[2], "blue"))
-                    {
-                        REQUESTED_COLOR = "\033[1;34m";
-                    }
+                    setColor(argv[2]);
                 }
             }
                 break;
@@ -107,6 +93,38 @@ int main(int argc, char *argv[])
 
     PrintConst(pathc);  //prints the constellation
     return EXIT_SUCCESS;
+}
+
+static void setColor(const char *str)
+{
+    if (!strcmp(str, "black"))
+    {
+        REQUESTED_COLOR = "\033[1;30m";
+    }
+    else if (!strcmp(str, "white"))
+    {
+        REQUESTED_COLOR = "\033[1;37m";
+    }
+    else if (!strcmp(str, "cyan"))
+    {
+        REQUESTED_COLOR = "\033[1;36m";
+    }
+    else if (!strcmp(str, "magenta"))
+    {
+        REQUESTED_COLOR = "\033[1;35m";
+    }
+    else if (!strcmp(str, "yellow"))
+    {
+        REQUESTED_COLOR = "\033[1;33m";
+    }
+    else if (!strcmp(str, "red"))
+    {
+        REQUESTED_COLOR = "\033[1;31m";
+    }
+    else if (!strcmp(str, "blue"))
+    {
+        REQUESTED_COLOR = "\033[1;34m";
+    }
 }
 
 static inline void PrintConst(string &pathc)
@@ -190,7 +208,7 @@ static inline void PrintList()
     {
         s = entry.path().u8string().substr(entry.path().u8string().find("constellations" + SEP)+15); //from "/usr/local/opt/starfetch/res/constellations/xxxxxx" to "xxxxxx"
         s = s.substr(0, s.length()-5);
-        if(s != ".DS_")    cout << s << endl;
+        if(s != ".DS_")    cout << REQUESTED_COLOR + s + "\033[0;0m" << endl;
     }  
     exit(EXIT_SUCCESS);
 }

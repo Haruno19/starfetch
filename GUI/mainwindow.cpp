@@ -179,9 +179,9 @@ static inline void PrintConst(string &pathc)
 
         c.close();
 
-        if (s.find("37m") != std::string::npos)
+        if (s.find("requestedColor") != std::string::npos)
         {
-            s = std::regex_replace(s, std::regex("1;37m"), "");
+            s = std::regex_replace(s, std::regex("requestedColor"), "");
             s = std::regex_replace(s, std::regex("0m"), "");
             s = std::regex_replace(s, std::regex("\\["), "");
             s = std::regex_replace(s, std::regex("│"), "");

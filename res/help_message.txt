@@ -5,7 +5,7 @@ Usage: starfetch [OPTION] [CONSTELLATION NAME]
     -n      Shows the selected constellation.
     -r      Shows a random constellation.
     -l      Prints the list of all the available constellations.
-    -c      Use given color such as: black, white, cyan, magenta, yellow, red, blue". Must be used the following way: starfetch -c yellow -n cancer
+    -c      Use given color such as: black, white, cyan, magenta, yellow, red, blue. Must be used the following way: starfetch -c yellow -n cancer
     
 If launched with no arguments, the behaviour is the same as with '-r'.
 
