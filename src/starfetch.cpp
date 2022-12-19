@@ -16,10 +16,10 @@
 using namespace std;
 using json = nlohmann::json;
 
-static void setColor(const char *str);
+static void setColor(const char *str); //sets given color to the REQUESTED_COLOR variable to colorize the output constellation
 static inline void PrintConst(string &pathc);  //formats the template file with the requested data and prints out the constellation info   
 static string RandomConst();   //select a random constellation from the available ones
-static inline void PrintList();   //prints out the list of the available constellations
+static void PrintList();   //prints out the list of the available constellations
 static void Error(const char *err, int type);   //shows an error message
 static void Help();    //prints out the help message
 
@@ -44,20 +44,18 @@ int main(int argc, char *argv[])
             case 'n':
             {
                 if(argc < 3) Error(" ", 0); //if the user requested a '-n' argument but didn't provide a name, an error occours
-                pathc += "constellations" + SEP; //updating the path to the constellations folder
-                pathc += argv[2];   //adding the name of the requested constellation to the path
-                pathc += ".json";
+                pathc += "constellations" + SEP + argv[2] + ".json"; //updating the path to the constellations folder and adding the name of the requested constallation to the pathc
             }
                 break;
             case 'h':   
                 Help();
-                break;
+                return EXIT_SUCCESS;
             case 'r':
                 pathc += RandomConst(); //with the '-r' option, it selects a random constellation
                 break;
             case 'l':
                 PrintList();
-                break;
+                return EXIT_SUCCESS;
             case 'c':
             {
                 if (argc == 2)
@@ -79,9 +77,7 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
-                    pathc += "constellations" + SEP; //updating the path to the constellations folder
-                    pathc += argv[4];   //adding the name of the requested constellation to the path
-                    pathc += ".json";
+                    pathc += "constellations" + SEP + argv[4] + ".json"; //updating the path to the constellations folder and adding the name of the requested constellation to the pathc
                     setColor(argv[2]);
                 }
             }
@@ -198,11 +194,11 @@ static string RandomConst()
     return s;
 }
 
-static inline void PrintList()
+static void PrintList()
 {
     string s;
 
-    cout << "✦ \e[1;37mavailable constellations\e[0m: " << endl; 
+    cout << REQUESTED_COLOR + "✦ available constellations\033[0;0m:" << endl; 
     //prints every constellation name from the files name in the "constellations/" directory
     for (const auto & entry : filesystem::directory_iterator(path+"constellations" + SEP))
     {
@@ -210,7 +206,6 @@ static inline void PrintList()
         s = s.substr(0, s.length()-5);
         if(s != ".DS_")    cout << REQUESTED_COLOR + s + "\033[0;0m" << endl;
     }  
-    exit(EXIT_SUCCESS);
 }
 
 static void Error(const char *err, int code)
