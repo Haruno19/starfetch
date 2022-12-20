@@ -3,7 +3,8 @@ A command line tool written in C++ that displays constellations.
 
 ## Table of contents
 * [Description](https://github.com/Haruno19/starfetch#description)
-* [Demo visuals](https://github.com/Haruno19/starfetch#demo-visuals)
+* [Demo (CLI)](https://github.com/Haruno19/starfetch#demo-cli)
+* [Demo (GUI)](https://github.com/Haruno19/starfetch#demo-gui)
 * [Installation](https://github.com/Haruno19/starfetch#installation)
     * [Manual (UNIX systems)](https://github.com/Haruno19/starfetch#manual-unix-systems)
     * [Manual (Windows)](https://github.com/Haruno19/starfetch#manual-windows)
@@ -112,17 +113,18 @@ Alternative versions:
 ## Usage
 **starfetch** accepts parameters to tweak its behaviour:
 ```
-starfetch [OPTION] [CONSTELLATION NAME]
+starfetch [OPTION] [ARGUMENT]
     -h      Prints this help message.
     -n      Shows the selected constellation.
     -r      Shows a random constellation.
     -l      Prints the list of all the available constellations.
-    -c      Use given color such as: black, white, cyan, magenta, yellow, red, blue. Must be used the following way: starfetch -c yellow -n cancer
+    -c      Use given color such as: black, white, cyan, magenta, yellow, red, blue.
     
-If launched with no arguments, the behaviour is the same as with '-r'.
+If launched with no arguments, the behaviour is the same as with '-c white -r'.
 
 Examples:   starfetch -r
             starfetch -n orion
+            starfetch -c yellow
             starfetch
 ```
 
