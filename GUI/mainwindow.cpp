@@ -24,18 +24,19 @@
 using namespace std;
 using json = nlohmann::json;
 
+//static void setColor(const char *str);
 static inline void PrintConst(string &pathc);  //formats the template file with the requested data and prints out the constellation info
 static string RandomConst();   //select a random constellation from the available ones
-static inline void PrintList();   //prints out the list of the available constellations
+static void PrintList();   //prints out the list of the available constellations
 static void Error(string &err, int type);   //shows an error message
 static void Help();    //prints out the help message
 
 #ifdef _WIN32
-  string path = "C:\\starfetch\\";
-  string SEP = "\\";
+  static string path = "C:\\starfetch\\";
+  static string SEP = "\\";
 #else
-  string path = "/usr/local/share/starfetch/";
-  string SEP = "/";
+  static string path = "/usr/local/share/starfetch/";
+  static string SEP = "/";
 #endif // _WIN32
 
 static QString oldText = "";
@@ -47,6 +48,8 @@ static QStringList wordList = {
     "-n ursa_minor", "-n virgo"
 };
 static QCompleter *completer = new QCompleter(wordList, nullptr);
+
+//static string REQUESTED_COLOR = "<font color=\"red\">";
 
 Ui::MainWindow *UI;
 
@@ -112,6 +115,57 @@ void MainWindow::on_pushButton_clicked()
         return;
     }
 
+    /*else if (userInput.find("-c ") != std::string::npos)
+    {
+        char foundConstellationFlag = 0;
+        char color[10] = {'\0'};
+        char constellation[20] = {'\0'};
+        char *colorPtr = color;
+        char *constellationPtr = constellation;
+        unsigned short int x = 0;
+        pathc += "constellations" + SEP;
+        string subStr = std::regex_replace(userInput, std::regex("-c "), "");
+        const char *subStrPtr = subStr.c_str();
+
+        for (x = 0; x < 10 && *subStrPtr; subStrPtr++, x++)
+        {
+            if (*subStrPtr == ' ')
+            {
+                subStrPtr++;
+                break;
+            }
+            *colorPtr++ = *subStrPtr;
+        }
+        *colorPtr = '\0';
+        setColor(color);
+
+        if (userInput.find(" -n") != std::string::npos)
+        {
+            cout << "inside -n " << endl;
+            subStr += std::regex_replace(userInput, std::regex("-n "), "");
+            for (x = 0; x < 20 && *subStrPtr; subStrPtr++, x++)
+            {
+                foundConstellationFlag = 1;
+                *constellationPtr++ = *subStrPtr;
+            }
+            *constellationPtr = '\0';
+            cout << constellation << endl;
+
+            pathc += constellation;
+            pathc += ".json";
+        }
+        else if (userInput.find(" -l") != std::string::npos)
+        {
+            PrintList();
+            ui->lineEdit->setText(static_cast<QString>(""));
+            return;
+        }
+
+        if (foundConstellationFlag == 0)
+        {
+            pathc += RandomConst();
+        }
+    }*/
     else
     {
         Error(userInput, 1);  //if the reqeusted option isn't recognized, an error occours
@@ -130,6 +184,38 @@ int main(int argc, char *argv[])
     w.show();
     return a.exec();
 }
+
+/* static void setColor(const char *str)
+{
+    if (!strcmp(str, "black"))
+    {
+        REQUESTED_COLOR = "<font color=\"black\">";
+    }
+    else if (!strcmp(str, "white"))
+    {
+        REQUESTED_COLOR = "<font color=\"white\">";
+    }
+    else if (!strcmp(str, "cyan"))
+    {
+        REQUESTED_COLOR = "<font color=\"cyan\">";
+    }
+    else if (!strcmp(str, "magenta"))
+    {
+        REQUESTED_COLOR = "<font color=\"magenta\">";
+    }
+    else if (!strcmp(str, "yellow"))
+    {
+        REQUESTED_COLOR = "<font color=\"yellow\">";
+    }
+    else if (!strcmp(str, "red"))
+    {
+        REQUESTED_COLOR = "<font color=\"red\">";
+    }
+    else if (!strcmp(str, "blue"))
+    {
+        REQUESTED_COLOR = "<font color=\"blue\">";
+    }
+} */
 
 static inline void PrintConst(string &pathc)
 {
@@ -215,7 +301,7 @@ static string RandomConst()
     return s;
 }
 
-static inline void PrintList()
+static void PrintList()
 {
     string s;
     oldText = "";
