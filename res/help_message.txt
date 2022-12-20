@@ -1,6 +1,6 @@
 starfetch is a command line tool that displays information about a constellation alongside its scheme.
 
-Usage: starfetch [OPTION] [CONSTELLATION NAME]
+Usage: starfetch [OPTION] [ARGUMENT]
     -h      Prints this help message.
     -n      Shows the selected constellation.
     -r      Shows a random constellation.
