@@ -31,7 +31,7 @@ static void Help();    //prints out the help message
   static string SEP = "/";
 #endif // _WIN32
 
-static string REQUESTED_COLOR = "\033[1;36m"; // cyan color
+static string REQUESTED_COLOR = "\033[1;37m"; // cyan color
 
 int main(int argc, char *argv[])
 {
@@ -94,33 +94,19 @@ int main(int argc, char *argv[])
 static void setColor(const char *str)
 {
     if (!strcmp(str, "black"))
-    {
         REQUESTED_COLOR = "\033[1;30m";
-    }
     else if (!strcmp(str, "white"))
-    {
         REQUESTED_COLOR = "\033[1;37m";
-    }
     else if (!strcmp(str, "cyan"))
-    {
         REQUESTED_COLOR = "\033[1;36m";
-    }
     else if (!strcmp(str, "magenta"))
-    {
         REQUESTED_COLOR = "\033[1;35m";
-    }
     else if (!strcmp(str, "yellow"))
-    {
         REQUESTED_COLOR = "\033[1;33m";
-    }
     else if (!strcmp(str, "red"))
-    {
         REQUESTED_COLOR = "\033[1;31m";
-    }
     else if (!strcmp(str, "blue"))
-    {
         REQUESTED_COLOR = "\033[1;34m";
-    }
 }
 
 static inline void PrintConst(string &pathc)
