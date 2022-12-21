@@ -24,7 +24,7 @@
 using namespace std;
 using json = nlohmann::json;
 
-//static void setColor(const char *str);
+static void setColor(const char *str); //sets given color to the REQUESTED_COLOR variable to colorize the output constellation
 static inline void PrintConst(string &pathc);  //formats the template file with the requested data and prints out the constellation info
 static string RandomConst();   //select a random constellation from the available ones
 static void PrintList();   //prints out the list of the available constellations
@@ -49,7 +49,7 @@ static QStringList wordList = {
 };
 static QCompleter *completer = new QCompleter(wordList, nullptr);
 
-//static string REQUESTED_COLOR = "<font color=\"red\">";
+static string REQUESTED_COLOR = "<font color=\"red\">";
 
 Ui::MainWindow *UI;
 
@@ -122,12 +122,12 @@ void MainWindow::on_pushButton_clicked()
         char constellation[20] = {'\0'};
         char *colorPtr = color;
         char *constellationPtr = constellation;
-        unsigned short int x = 0;
-        pathc += "constellations" + SEP;
         string subStr = std::regex_replace(userInput, std::regex("-c "), "");
         const char *subStrPtr = subStr.c_str();
 
-        for (x = 0; x < 10 && *subStrPtr; subStrPtr++, x++)
+        pathc += "constellations" + SEP;
+
+        for (;*subStrPtr; subStrPtr++)
         {
             if (*subStrPtr == ' ')
             {
@@ -139,17 +139,15 @@ void MainWindow::on_pushButton_clicked()
         *colorPtr = '\0';
         setColor(color);
 
-        if (userInput.find(" -n") != std::string::npos)
+        if (userInput.find("-n ") != std::string::npos)
         {
-            cout << "inside -n " << endl;
-            subStr += std::regex_replace(userInput, std::regex("-n "), "");
-            for (x = 0; x < 20 && *subStrPtr; subStrPtr++, x++)
+            subStr = std::regex_replace(subStr, std::regex("-n "), "");
+            for (;*subStrPtr; subStrPtr++)
             {
                 foundConstellationFlag = 1;
                 *constellationPtr++ = *subStrPtr;
             }
             *constellationPtr = '\0';
-            cout << constellation << endl;
 
             pathc += constellation;
             pathc += ".json";
@@ -185,7 +183,7 @@ int main(int argc, char *argv[])
     return a.exec();
 }
 
-/* static void setColor(const char *str)
+static void setColor(const char *str)
 {
     if (!strcmp(str, "black"))
     {
@@ -215,7 +213,7 @@ int main(int argc, char *argv[])
     {
         REQUESTED_COLOR = "<font color=\"blue\">";
     }
-} */
+}
 
 static inline void PrintConst(string &pathc)
 {
