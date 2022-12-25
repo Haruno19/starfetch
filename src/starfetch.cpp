@@ -31,7 +31,7 @@ static void Help();    //prints out the help message
   static string SEP = "/";
 #endif // _WIN32
 
-static string REQUESTED_COLOR = "\033[1;37m"; // cyan color
+static string REQUESTED_COLOR = "\033[1;37m"; // white color
 
 int main(int argc, char *argv[])
 {
