@@ -16,7 +16,7 @@
 using namespace std;
 using json = nlohmann::json;
 
-static void setColor(const char *str); //sets given color to the REQUESTED_COLOR variable to colorize the output constellation
+static void setColor(string color); //sets given color to the REQUESTED_COLOR variable to colorize the output constellation
 static inline void PrintConst(string &pathc);  //formats the template file with the requested data and prints out the constellation info   
 static string RandomConst();   //select a random constellation from the available ones
 static void PrintList();   //prints out the list of the available constellations
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
                 }
                 else if (argc == 3 || argc == 4)
                 {
-                    setColor(argv[2]);
+                    setColor(static_cast<string>(argv[2]));
 
                     if (argc == 4 && !strcmp(argv[3], "-l"))
                     {
@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
                 else
                 {
                     pathc += "constellations" + SEP + argv[4] + ".json"; //updating the path to the constellations folder and adding the name of the requested constellation to the pathc
-                    setColor(argv[2]);
+                    setColor(static_cast<string>(argv[2]));
                 }
             }
                 break;
@@ -91,21 +91,21 @@ int main(int argc, char *argv[])
     return EXIT_SUCCESS;
 }
 
-static void setColor(const char *str)
+static void setColor(string color)
 {
-    if (!strcmp(str, "black"))
+    if (color == "black")
         REQUESTED_COLOR = "\033[1;30m";
-    else if (!strcmp(str, "white"))
+    else if (color == "white")
         REQUESTED_COLOR = "\033[1;37m";
-    else if (!strcmp(str, "cyan"))
+    else if (color == "cyan")
         REQUESTED_COLOR = "\033[1;36m";
-    else if (!strcmp(str, "magenta"))
+    else if (color == "magenta")
         REQUESTED_COLOR = "\033[1;35m";
-    else if (!strcmp(str, "yellow"))
+    else if (color == "yellow")
         REQUESTED_COLOR = "\033[1;33m";
-    else if (!strcmp(str, "red"))
+    else if (color == "red")
         REQUESTED_COLOR = "\033[1;31m";
-    else if (!strcmp(str, "blue"))
+    else if (color == "blue")
         REQUESTED_COLOR = "\033[1;34m";
 }
 
