@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <cstdio>
+#include <cstring>
 #include <string>
 #include <ctime>
 #include <filesystem>
@@ -24,7 +25,7 @@
 using namespace std;
 using json = nlohmann::json;
 
-static void setColor(const char *str); //sets given color to the REQUESTED_COLOR variable to colorize the output constellation
+static void setColor(string color); //sets given color to the REQUESTED_COLOR variable to colorize the output constellation
 static inline void PrintConst(string &pathc);  //formats the template file with the requested data and prints out the constellation info
 static string RandomConst();   //select a random constellation from the available ones
 static void PrintList();   //prints out the list of the available constellations
@@ -117,6 +118,7 @@ void MainWindow::on_pushButton_clicked()
 
     /*else if (userInput.find("-c ") != std::string::npos)
     {
+        unsigned short int x = 0U;
         char foundConstellationFlag = 0;
         char color[10] = {'\0'};
         char constellation[20] = {'\0'};
@@ -127,7 +129,7 @@ void MainWindow::on_pushButton_clicked()
 
         pathc += "constellations" + SEP;
 
-        for (;*subStrPtr; subStrPtr++)
+        for (;x < 9U && *subStrPtr; subStrPtr++)
         {
             if (*subStrPtr == ' ')
             {
@@ -137,12 +139,12 @@ void MainWindow::on_pushButton_clicked()
             *colorPtr++ = *subStrPtr;
         }
         *colorPtr = '\0';
-        setColor(color);
+        setColor(static_cast<string>(color));
 
         if (userInput.find("-n ") != std::string::npos)
         {
             subStr = std::regex_replace(subStr, std::regex("-n "), "");
-            for (;*subStrPtr; subStrPtr++)
+            for (;x < 19U && *subStrPtr; subStrPtr++)
             {
                 foundConstellationFlag = 1;
                 *constellationPtr++ = *subStrPtr;
@@ -183,36 +185,22 @@ int main(int argc, char *argv[])
     return a.exec();
 }
 
-static void setColor(const char *str)
+static void setColor(string color)
 {
-    if (!strcmp(str, "black"))
-    {
+    if (color == "black")
         REQUESTED_COLOR = "<font color=\"black\">";
-    }
-    else if (!strcmp(str, "white"))
-    {
+    else if (color == "white")
         REQUESTED_COLOR = "<font color=\"white\">";
-    }
-    else if (!strcmp(str, "cyan"))
-    {
+    else if (color == "cyan")
         REQUESTED_COLOR = "<font color=\"cyan\">";
-    }
-    else if (!strcmp(str, "magenta"))
-    {
+    else if (color == "magenta")
         REQUESTED_COLOR = "<font color=\"magenta\">";
-    }
-    else if (!strcmp(str, "yellow"))
-    {
+    else if (color == "yellow")
         REQUESTED_COLOR = "<font color=\"yellow\">";
-    }
-    else if (!strcmp(str, "red"))
-    {
+    else if (color == "red")
         REQUESTED_COLOR = "<font color=\"red\">";
-    }
-    else if (!strcmp(str, "blue"))
-    {
+    else if (color == "blue")
         REQUESTED_COLOR = "<font color=\"blue\">";
-    }
 }
 
 static inline void PrintConst(string &pathc)
