@@ -102,9 +102,9 @@ Compilation process on Windows relies on [MingW](https://www.mingw-w64.org). Fol
 ]
 }
 ```
-- Clone strafetch repository and move all files from `starfetch/res` to `C:\starfetch`;
+- Clone the starfetch repository and move all files from `starfetch/res` to `C:\starfetch`;
 - Return to Visual Studio Code and compile the program pressing `CTRL + SHIFT + B`;
-- After the compilation  has finisheda, press ```CTRL + \` ``` and run the following commands:  
+- After the compilation  has finished, press ```CTRL + \` ``` and run the following commands:  
 `cp -r C:\Users\[USERNAME]\Desktop\starfetch.exe`, `C:\MingW\bin; cd C:\MingW\bin`, `.\starfetch.exe`
 
 Alternative versions:
@@ -191,14 +191,14 @@ Please, make sure to use them. Before and after the name, you have to put the [b
 Please, make sure to place the same number of box-drawing characters on both sides, in order to make the name appear at the center.  
 Between the constellation name and the box-drawing characters, you should place a whitespace.  
 (e.g. ``"───── ｎａｍｅ ─────"``).
-* The ``line1`` to ``line10`` fields should containd the X coordinates of the stars in each line. 
+* The ``line1`` to ``line10`` fields should contain the X coordinates of the stars in each line. 
 Please, make sure to center the graph both vertically and horizontally and please, make sure not to leave any star without an X coordinate (e.g. **don't** write this: ``"" : "✦"``).
 * The ``"name"`` field should contain the name of the constellation starting with the capital letter.
 * The ``"quadrant"`` field should contain the quadrant of the constellation, all in capital letters and without spaces. 
 * The ``"right ascension"`` field should contain the right ascension of the constellation.  
 Please, make sure to separate each value with a whitespace, and in case a constellation has two right ascension values, separate them with a "to" (e.g. ``"22h 57m 04.5897s to –03h 41m 14.0997s"``).
 * The ``declination`` field should contain the declination of the constellation.  
-Please, make sure to specify bot - and + symbols for negative and positive values. If there are two declination values, separate them with a "to" (e.g. ``"+77.6923447° to –48.6632690°"``).
+Please, make sure to specify both - and + symbols for negative and positive values. If there are two declination values, separate them with a "to" (e.g. ``"+77.6923447° to –48.6632690°"``).
 * The ``"area"`` field should contain the area of the constellation.  
 Please, make sure to include the unit of measurement, written with lowercase letters (e.g. ``"598 sq.deg. (25th)"``).
 * The ``"main stars"`` field should contain the number of stars that compose the constellation.
@@ -209,7 +209,7 @@ Your help is highly appreciated!
 ## Credits & Dependencies
 
 ### JSON for Modern C++
-To work easly with JSON files, starfetch relies on [JSON for Modern C++](https://github.com/nlohmann/json) by [Niels Lohmann](https://github.com/nlohmann).   
+To work easily with JSON files, starfetch relies on [JSON for Modern C++](https://github.com/nlohmann/json) by [Niels Lohmann](https://github.com/nlohmann).   
 Although relying on external libraries, no dependencies are needed to install starfetch, since said library is already included in this repository (``src/include/json.hpp``) via the [single_include](https://github.com/nlohmann/json/blob/develop/single_include/nlohmann/json.hpp) version provided by the author, in order to make it easier for you, the end user, to enjoy starfetch.
   
 ### Contributions
@@ -220,7 +220,7 @@ Although relying on external libraries, no dependencies are needed to install st
 * Credits to [Nathan Richard](https://github.com/naTariks) for creating the JSON file for the ``monoceros`` constellation!
 * Credits to [Andreas Grafen](https://github.com/andreasgrafen) for creating the JSON file for the ``canes venatici`` constellation!  
 
-Very huge thanks to [su8](https://github.com/su8) for optimizing and polishing starfetch's code, adding compatibilty for Windows systems and the related detailed documentation, and developing the graphical version of starfetch! 
+Very huge thanks to [su8](https://github.com/su8) for optimizing and polishing starfetch's code, adding compatibility for Windows systems and the related detailed documentation, and developing the graphical version of starfetch! 
 
 
 ---- 
