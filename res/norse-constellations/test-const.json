@@ -1,0 +1,22 @@
+{
+    "title": "─ｔｅｓｔ  ｃｏｎｓｔ─",
+    "graph":
+        {
+            "line1": { "8": "✦"  },
+            "line2": {  "6": "✦",  "9": "✦"  },
+            "line3": {  "10": "✦" },
+            "line4": { },
+            "line5": { },
+            "line6": {  "12": "✦"  },
+            "line7": {  "7": "✦"   },
+            "line8": { "11": "✦",  "17": "✦"  },
+            "line9": { },
+            "line10": {  "15": "✦" }
+        },
+    "name": "test-const",
+    "quadrant": "SQ3",
+    "right ascension": "16.8875h",
+    "declination": "-30.7367°",
+    "area": "497 sq.deg. (33rd)",
+    "main stars": "18"
+}

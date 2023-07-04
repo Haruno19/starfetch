@@ -1,0 +1,22 @@
+{
+    "title": "─── Puppis ───",
+    "graph":
+        {
+            "line1": { "7": "✦" },
+            "line2": { "5": "✦", "10": "✦"  },
+            "line3": { "11": "✦" },
+            "line4": {},
+            "line5": {},
+            "line6": {  "14": "✦" },
+            "line7": {  "6": "✦" },
+            "line8": { "12": "✦",  "18": "✦"  },
+            "line9": {},
+            "line10": { "16": "✦" }
+        },
+    "name": "Puppis",
+    "quadrant": "SQ3",
+    "right ascension": "16.8875h",
+    "declination": "-30.7367°",
+    "area": "497 sq.deg. (33rd)",
+    "main stars": "18"
+}
