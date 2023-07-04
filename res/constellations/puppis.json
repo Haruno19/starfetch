@@ -1,5 +1,5 @@
 {
-    "title": "─── Puppis ───",
+    "title": "──── ｐｕｐｐｉｓ ────",
     "graph":
         {
             "line1": { "7": "✦" },
@@ -14,9 +14,9 @@
             "line10": { "16": "✦" }
         },
     "name": "Puppis",
-    "quadrant": "SQ3",
-    "right ascension": "16.8875h",
-    "declination": "-30.7367°",
-    "area": "497 sq.deg. (33rd)",
-    "main stars": "18"
+    "quadrant": "SQ2",
+    "right ascension": "7.5h",
+    "declination": "-30°",
+    "area": "673 sq.deg. (20th)",
+    "main stars": "9"
 }
