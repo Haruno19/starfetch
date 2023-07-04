@@ -20,9 +20,8 @@ using json = nlohmann::json;
 static void setColor(string color); //sets given color to the REQUESTED_COLOR variable to colorize the output constellation
 static inline void PrintConst(string &pathc);  //formats the template file with the requested data and prints out the constellation info
 static string RandomConst();   //select a random constellation from the available ones
-static string RandomConstRefactor();   //test function to refactor RandomConst
+static string RandomConstRefactor();   //select a random constellation from the available ones
 static void PrintList();   //prints out the list of the available constellations
-static void PrintListNorse();   //prints out the list of the available norse constellations
 static void Error(const char *err, int type);   //shows an error message
 static void Help();    //prints out the help message
 
@@ -32,7 +31,7 @@ static string SEP = "\\";
 #else
 static string path = "/usr/local/share/starfetch/";
 static string SEP = "/";
-string directories[2] = {"constellations", "norse-constellations"}; // array that holds all the directory paths
+string directories[2] = {"constellations", "norse-constellations"}; // array that holds all the directory paths. Consider using a multidimensional array to hold the directory name and also the "nickname" to be used for <type> when using "starfetch -n <type> <constellation>"
 #endif // _WIN32
 
 static string REQUESTED_COLOR = "\033[1;37m"; // white color
@@ -76,7 +75,6 @@ int main(int argc, char *argv[])
         break;
       case 'l':
         PrintList();
-        PrintListNorse();
         return EXIT_SUCCESS;
       case 'c':
         {
@@ -92,7 +90,6 @@ int main(int argc, char *argv[])
             if (argc == 4 && !strcmp(argv[3], "-l"))
             {
               PrintList();
-              PrintListNorse();
               return EXIT_SUCCESS;
             }
 
@@ -100,7 +97,7 @@ int main(int argc, char *argv[])
           }
           else
           {
-            pathc += "constellations" + SEP + argv[4] + ".json"; //updating the path to the constellations folder and adding the name of the requested constellation to the pathc
+            pathc += directories[0] + SEP + argv[4] + ".json"; //updating the path to the constellations folder and adding the name of the requested constellation to the pathc
             setColor(static_cast<string>(argv[2]));
           }
         }
@@ -245,7 +242,6 @@ static string RandomConst()
     pos = entry.path().u8string().find("constellations" + SEP);
     s = entry.path().u8string().substr(pos);
     if(s != "constellations/.DS_Store" && udist(e) == udist(e))
-      //if(s != "constellations/.DS_Store" && udist(rd) == udist(rd))
       break;
   }
 
@@ -257,27 +253,16 @@ static void PrintList()
 {
   string s;
 
-  cout << REQUESTED_COLOR + "✦  available constellations\033[0;0m:" << endl;
-  //prints every constellation name from the files name in the "constellations/" directory
-  for (const auto & entry : filesystem::directory_iterator(path+"constellations" + SEP))
-  {
-    s = entry.path().u8string().substr(entry.path().u8string().find("constellations" + SEP)+15); //from "/usr/local/opt/starfetch/res/constellations/xxxxxx" to "xxxxxx"
-    s = s.substr(0, s.length()-5);
-    if(s != ".DS_")    cout << REQUESTED_COLOR + s + "\033[0;0m" << endl;
-  }
-}
-
-static void PrintListNorse()
-{
-  string s;
-
-  cout << REQUESTED_COLOR + "✦  available Norse constellations\033[0;0m:" << endl;
-  //prints every constellation name from the files name in the "constellations/" directory
-  for (const auto & entry : filesystem::directory_iterator(path+"norse-constellations" + SEP))
-  {
-    s = entry.path().u8string().substr(entry.path().u8string().find("constellations" + SEP)+15); //from "/usr/local/opt/starfetch/res/constellations/xxxxxx" to "xxxxxx"
-    s = s.substr(0, s.length()-5);
-    if(s != ".DS_")    cout << REQUESTED_COLOR + s + "\033[0;0m" << endl;
+  //cout << REQUESTED_COLOR + "✦  available constellations\033[0;0m:" << endl;
+  //prints every constellation name from the files name in the directories array
+  for (long unsigned int i = 0; i < sizeof(directories)/sizeof(string); i++){
+  cout << "\n" + REQUESTED_COLOR + "✦ available " + directories[i] + "\033[0;0m:" << endl;
+    for (const auto & entry : filesystem::directory_iterator(path + directories[i] + SEP))
+    {
+      s = entry.path().u8string().substr(entry.path().u8string().find("constellations" + SEP)+15); //from "/usr/local/opt/starfetch/res/constellations/xxxxxx" to "xxxxxx"
+      s = s.substr(0, s.length()-5);
+      if(s != ".DS_")    cout << REQUESTED_COLOR + s + "\033[0;0m" << endl;
+    }
   }
 }
 
