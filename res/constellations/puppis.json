@@ -1,0 +1,22 @@
+{
+    "title": "──── ｐｕｐｐｉｓ ────",
+    "graph":
+        {
+            "line1": { "7": "✦" },
+            "line2": { "5": "✦", "10": "✦"  },
+            "line3": { "11": "✦" },
+            "line4": {},
+            "line5": {},
+            "line6": {  "14": "✦" },
+            "line7": {  "6": "✦" },
+            "line8": { "12": "✦",  "18": "✦"  },
+            "line9": {},
+            "line10": { "16": "✦" }
+        },
+    "name": "Puppis",
+    "quadrant": "SQ2",
+    "right ascension": "7.5h",
+    "declination": "-30°",
+    "area": "673 sq.deg. (20th)",
+    "main stars": "9"
+}

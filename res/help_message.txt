@@ -6,10 +6,11 @@ Usage: starfetch [OPTION] [ARGUMENT]
     -r      Shows a random constellation.
     -l      Prints the list of all the available constellations.
     -c      Use given color such as: black, white, cyan, magenta, yellow, red, blue.
-    
+
 If launched with no arguments, the behaviour is the same as with '-c white -r'.
 
 Examples:   starfetch -r
             starfetch -n orion
+            starfetch -n norse karlvagn
             starfetch -c yellow
             starfetch
