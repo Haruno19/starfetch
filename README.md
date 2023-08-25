@@ -119,11 +119,12 @@ starfetch [OPTION] [ARGUMENT]
     -r      Shows a random constellation.
     -l      Prints the list of all the available constellations.
     -c      Use given color such as: black, white, cyan, magenta, yellow, red, blue.
-    
+
 If launched with no arguments, the behaviour is the same as with '-c white -r'.
 
 Examples:   starfetch -r
             starfetch -n orion
+            starfetch -n norse karlvagn
             starfetch -c yellow
             starfetch
 ```
@@ -221,6 +222,8 @@ Although relying on external libraries, no dependencies are needed to install st
 * Credits to [Andreas Grafen](https://github.com/andreasgrafen) for creating the JSON file for the ``canes venatici`` constellation!  
 
 Very huge thanks to [su8](https://github.com/su8) for optimizing and polishing starfetch's code, adding compatibility for Windows systems and the related detailed documentation, and developing the graphical version of starfetch! 
+
+Huge thanks to [Belaja-akacija](https://github.com/belaja-akacija) for adding the functionality to select from different types of constellations, adding the Norse constellations collection and creating the JSON files for the ``friggerock`` constellation, and refactoring and polishing starfetch's code!
 
 
 ---- 
