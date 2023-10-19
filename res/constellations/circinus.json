@@ -1,0 +1,21 @@
+{
+  "title": "─── ｃｉｒｃｉｎｕｓ ───",
+  "graph": {
+    "line1": {},
+    "line2": { "8": "✦", "12": "✦" },
+    "line3": {},
+    "line4": {},
+    "line5": { "11": "✦" },
+    "line6": {},
+    "line7": { "11": "✦" },
+    "line8": {},
+    "line9": { "12": "✦" },
+    "line10": {}
+  },
+  "name": "Circinus",
+  "quadrant": "SQ3",
+  "right ascension": "13h 38.4m to 15h 30.2m",
+  "declination": "-55.43° to -70.62°",
+  "area": "93 sq.deg. (85th)",
+  "main stars": "3"
+}
