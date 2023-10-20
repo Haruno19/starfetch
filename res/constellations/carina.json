@@ -1,0 +1,21 @@
+{
+  "title": "── ｃａｒｉｎａ ──",
+  "graph": {
+    "line1": { "12": "✦" },
+    "line2": { "3": "✦" },
+    "line3": { "8": "✦" },
+    "line4": {},
+    "line5": { "5": "✦", "19": "✦" },
+    "line6": {},
+    "line7": { "12": "✦" },
+    "line8": { "19": "✦" },
+    "line9": { "7": "✦" },
+    "line10": { "11": "✦" }
+  },
+  "name": "Carina",
+  "quadrant": "SQ2",
+  "right ascension": "06h 02m 59.7365s to 11h 20m 37.4211s",
+  "declination": "−50.7545471° to −75.6840134°",
+  "area": "494 sq. deg. (34th)",
+  "main stars": "9"
+}

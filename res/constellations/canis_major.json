@@ -1,0 +1,21 @@
+{
+  "title": " ｃａｎｉｓ＿ｍａｊｏｒ ",
+  "graph": {
+    "line1": { "13": "✦" },
+    "line2": { "10": "✦" },
+    "line3": { "11": "✦" },
+    "line4": { "14": "✦" },
+    "line5": { "20": "✦" },
+    "line6": {},
+    "line7": { "8": "✦" },
+    "line8": {},
+    "line9": { "6": "✦" },
+    "line10": { "1": "✦", "10": "✦" }
+  },
+  "name": "Canis Major",
+  "quadrant": "SQ1",
+  "right ascension": "06h 12.5m to 07h 27.5m",
+  "declination": "−11.03° to −33.25°",
+  "area": "380 sq. deg. (43rd)",
+  "main stars": "8"
+}

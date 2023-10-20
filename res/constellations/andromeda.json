@@ -1,0 +1,21 @@
+{
+  "title": "─ ａｎｄｒｏｍｅｄａ ─",
+  "graph": {
+    "line1": { "19": "✦" },
+    "line2": {},
+    "line3": { "6": "✦" },
+    "line4": { "9": "✦", "17": "✦" },
+    "line5": {},
+    "line6": { "12": "✦" },
+    "line7": {},
+    "line8": {},
+    "line9": { "4": "✦" },
+    "line10": {}
+  },
+  "name": "Andromeda",
+  "quadrant": "NQ1",
+  "right ascension": "23h 25m 48.6945s to 02h 39m 32.5149s",
+  "declination": "53.1870041° to 21.6766376°",
+  "area": "722 sq. deg. (19th)",
+  "main stars": "16"
+}
