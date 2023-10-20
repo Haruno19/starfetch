@@ -1,0 +1,21 @@
+{
+  "title": "─── ａｑｕｉｌａ ───",
+  "graph": {
+    "line1": { "12": "✦" },
+    "line2": { "10": "✦" },
+    "line3": { "7": "✦", "20": "✦" },
+    "line4": {},
+    "line5": { "2": "✦" },
+    "line6": { "11": "✦" },
+    "line7": {},
+    "line8": {},
+    "line9": { "10": "✦" },
+    "line10": {}
+  },
+  "name": "Aquila",
+  "quadrant": "NQ4",
+  "right ascension": "18h 41m 18.2958s to 20h 38m 23.7231s",
+  "declination": "18.6882229° to 11.8664360°",
+  "area": "652 sq. deg. (22nd)",
+  "main stars": "10"
+}

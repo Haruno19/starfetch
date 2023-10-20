@@ -1,0 +1,21 @@
+{
+  "title": " ｃａｍｅｌｏｐａｒｄ ",
+  "graph": {
+    "line1": { "1": "✦" },
+    "line2": { "5": "✦" },
+    "line3": { "9": "✦" },
+    "line4": {},
+    "line5": { "12": "✦" },
+    "line6": { "6": "✦" },
+    "line7": { "17": "✦" },
+    "line8": { "7": "✦", "18": "✦" },
+    "line9": {},
+    "line10": { "9": "✦", "20": "✦" }
+  },
+  "name": "Camelopardalis",
+  "quadrant": "NQ2",
+  "right ascension": "03h 15m 36.2232s to 14h 27m 07.8855s",
+  "declination": "86.0975418° to 52.6655540°",
+  "area": "757 sq. deg. (18th)",
+  "main stars": "2, 8"
+}

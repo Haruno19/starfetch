@@ -1,0 +1,21 @@
+{
+  "title": "── ｃａｅｌｕｍ ──",
+  "graph": {
+    "line1": {},
+    "line2": { "15": "✦" },
+    "line3": {},
+    "line4": { "11": "✦" },
+    "line5": { "4": "✦" },
+    "line6": {},
+    "line7": {},
+    "line8": { "2": "✦" },
+    "line9": {},
+    "line10": {}
+  },
+  "name": "Caelum",
+  "quadrant": "SQ1",
+  "right ascension": "04h 19.5m to 05h 05.1m",
+  "declination": "−27.02° to −48.74°",
+  "area": "125 sq. deg. (81st)",
+  "main stars": "4"
+}
