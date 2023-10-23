@@ -19,7 +19,7 @@ using json = nlohmann::json;
 
 static void setColor(string color); //sets given color to the REQUESTED_COLOR variable to colorize the output constellation
 static inline void PrintConst(string &pathc);  //formats the template file with the requested data and prints out the constellation info
-static string RandomConst();   //select a random constellation from the available ones
+//static string RandomConst();   //select a random constellation from the available ones
 static string RandomConstRefactor();   //select a random constellation from the available ones
 static void PrintList();   //prints out the list of the available constellations
 static void Error(const char *err, int type);   //shows an error message
@@ -226,7 +226,7 @@ static string RandomConstRefactor()
 }
 
 
-static string RandomConst()
+/*static string RandomConst()
 {
   //srand(static_cast<unsigned int>(time(NULL)) ^ static_cast<unsigned int>(getpid()));
   std::random_device rd;
@@ -244,10 +244,9 @@ static string RandomConst()
     if(s != "constellations/.DS_Store" && udist(e) == udist(e))
       break;
   }
-
-
+  
   return s;
-}
+}*/
 
 static void PrintList()
 {
