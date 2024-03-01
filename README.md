@@ -10,6 +10,8 @@ A command line tool written in C++ that displays constellations.
     * [Manual (Windows)](https://github.com/Haruno19/starfetch#manual-windows)
 * [Usage](https://github.com/Haruno19/starfetch#usage)
 * [Available constellations](https://github.com/Haruno19/starfetch#available-constellations)
+    * [Constellations](https://github.com/Haruno19/starfetch/edit/main/README.md#constellations)
+    * [Norse Constellations](https://github.com/Haruno19/starfetch/edit/main/README.md#norse-constellations)
 * [JSON Format](https://github.com/Haruno19/starfetch#json-format)
     * [Contribution guidelines](https://github.com/Haruno19/starfetch#contribution-guidelines)
 * [Credits & Dependencies](https://github.com/Haruno19/starfetch#credits--dependencies)
@@ -130,22 +132,34 @@ Examples:   starfetch -r
 ```
 
 ## Available constellations
+
+### Constellations
 ```
-orion          gemini            monoceros
-aries          scorpio           canes_venatici
-cancer         sagittarius
-cygnus         aquarius
-cassiopeia     ophiuchus
-libra          pisces
-virgo          antilia
-leo            ara
-capricorn      apus
-taurus         bootes
-ursa_major     crux
-ursa_minor     corona_borealis
-lupus          lyra
+andromeda         capricorn          orion
+antlia            carina             pisces
+apus              cassiopeia         puppis
+aquarius          centaurus          sagittarius
+aquila            circinus           scorpio
+ara               corona_borealis    taurus
+aries             crux               ursa_majaor
+auriga            cygnus             ursa_minor
+bootes            gemini             virgo
+caelum            leo
+camelopardalis    libra
+cancer            lupus
+canes_venatici    lyra
+canis_major       monoceros
+canis_minor       ophiuchus
 ```
-I will add more and more constellations!
+
+### Norse Constellations
+```
+asarbardagi
+friggerock
+karlvagn
+kvennavagn
+ulfskeptr
+```
 
 ## JSON format
 All the constellation data is stored as JSON files in the ``res/constellations/`` directory.  
@@ -214,17 +228,17 @@ To work easily with JSON files, starfetch relies on [JSON for Modern C++](https:
 Although relying on external libraries, no dependencies are needed to install starfetch, since said library is already included in this repository (``src/include/json.hpp``) via the [single_include](https://github.com/nlohmann/json/blob/develop/single_include/nlohmann/json.hpp) version provided by the author, in order to make it easier for you, the end user, to enjoy starfetch.
   
 ### Contributions
-* Credits to John Southern for creating the JSON files for the ``gemini``, ``scorpio``, ``sagittarius``, ``aquarius``, ``ophiuchus`` and ``pisces`` constellations!  
+* Credits to John Southern for creating the JSON files for the ``gemini``, ``scorpio``, ``sagittarius``, ``aquarius``, ``ophiuchus`` and ``pisces`` constellations, as well as correcting the ``lyra`` constellation's JSON file and creating the JSON files for the ``kvennavagn``, ``ulfskeptr``, ``karlvagn`` and ``asarbardagi`` norse constellations!  
 * Credits to [Hushm](https://github.com/HushmKun) for creating the JSON files for the ``antlia``, ``ara`` and ``apus`` constellations!
 * Credits to [kbHoward2](https://github.com/kbHoward2) for creating the JSON file for the ``lupus`` constellation!
 * Credits to [Vega Deftwing](https://github.com/VegaDeftwing) for creating the JSON file for the ``lyra`` constellation!
 * Credits to [Nathan Richard](https://github.com/naTariks) for creating the JSON file for the ``monoceros`` constellation!
-* Credits to [Andreas Grafen](https://github.com/andreasgrafen) for creating the JSON file for the ``canes venatici`` constellation!
+* Credits to [Andreas Grafen](https://github.com/andreasgrafen) for creating the JSON file for the ``canes_venatici`` constellation!
 * Credits tp [Munimul](https://github.com/Munimul) for creating the JSON files for the ``andromeda``, ``auriga``, ``aquila``, ``caelum``, ``camelopardalis``, ``canis_major``, ``canis_minor``,  ``carina``, ``centaurus`` and ``circinus`` constalltions!
 
 Very huge thanks to [su8](https://github.com/su8) for optimizing and polishing starfetch's code, adding compatibility for Windows systems and the related detailed documentation, and developing the graphical version of starfetch! 
 
-Huge thanks to [Belaja-akacija](https://github.com/belaja-akacija) for adding the functionality to select from different types of constellations, adding the Norse constellations collection and creating the JSON files for the ``friggerock`` constellation, and refactoring and polishing starfetch's code!
+Huge thanks to [Belaja-akacija](https://github.com/belaja-akacija) for adding the functionality to select from different types of constellations, adding the Norse constellations collection and creating the JSON files for the ``friggerock`` norse constellation, and refactoring and polishing starfetch's code!
 
 
 ---- 
