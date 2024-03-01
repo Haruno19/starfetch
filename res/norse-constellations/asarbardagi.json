@@ -1,0 +1,21 @@
+{
+  "title": "ａｓａｒｂａｒｄａｇｉ",
+  "graph": {
+    "line1": {},
+    "line2": { "5": "✦", "14": "✦" },
+    "line3": {},
+    "line4": { "16": "✦" },
+    "line5": {},
+    "line6": { "3": "✦" },
+    "line7": {},
+    "line8": { "15": "✦" },
+    "line9": {},
+    "line10": { "10": "✦" }
+  },
+  "name": "Asar Bardagi",
+  "quadrant": "NQ1",
+  "right ascension": "4h 37m 54.4293s to 7h 30m 56.1899s",
+  "declination": "56.1648331°to 27.8913116°",
+  "area": "657 sq. deg. (21st)",
+  "main stars": "5, 8"
+}
