@@ -3,7 +3,7 @@
 @ECHO OFF
 :BEGIN
 CLS
-COPY main.exe C:\MingW\bin\starfetch.exe
+COPY starfetch.exe C:\MingW\bin\starfetch.exe
 :loop
 C:\MingW\bin\starfetch.exe -c blue
 PAUSE
