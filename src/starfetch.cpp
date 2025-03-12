@@ -32,7 +32,7 @@ static string SEP = "\\";
 static string path = "/usr/local/share/starfetch/";
 static string SEP = "/";
 #endif // _WIN32
-string directories[2] = {"constellations", "norse-constellations"}; // array that holds all the directory paths. Consider using a multidimensional array to hold the directory name and also the "nickname" to be used for <type> when using "starfetch -n <type> <constellation>"
+static string directories[2] = {"constellations", "norse-constellations"}; // array that holds all the directory paths. Consider using a multidimensional array to hold the directory name and also the "nickname" to be used for <type> when using "starfetch -n <type> <constellation>"
 static string REQUESTED_COLOR = "\033[1;37m"; // white color
 
 int main(int argc, char *argv[])
@@ -112,8 +112,8 @@ int main(int argc, char *argv[])
 
 static void setColor(string color)
 {
-  static const char *reqColor[] = {"\033[1;30m", "\033[1;37m", "\033[1;36m", "\033[1;35m", "\033[1;33m", "\033[1;31m", "\033[1;34m"};
-  static const char *colorKeyword[] = {"black", "white", "cyan", "magenta", "yellow", "red", "blue"};
+  static const string reqColor[] = {"\033[1;30m", "\033[1;37m", "\033[1;36m", "\033[1;35m", "\033[1;33m", "\033[1;31m", "\033[1;34m"};
+  static const string colorKeyword[] = {"black", "white", "cyan", "magenta", "yellow", "red", "blue"};
   for (unsigned short int x = 0U; x < 7U; x++) {
     if (color == colorKeyword[x]) {
       REQUESTED_COLOR = reqColor[x];
