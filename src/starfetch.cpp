@@ -11,6 +11,7 @@
 #include <random>
 #include <regex>
 #include <list>
+#include <map>
 //#include <unistd.h> for getpid()
 #include "include/json.hpp"
 
@@ -112,11 +113,10 @@ int main(int argc, char *argv[])
 
 static void setColor(string color)
 {
-  static const string reqColor[] = {"\033[1;30m", "\033[1;37m", "\033[1;36m", "\033[1;35m", "\033[1;33m", "\033[1;31m", "\033[1;34m"};
-  static const string colorKeyword[] = {"black", "white", "cyan", "magenta", "yellow", "red", "blue"};
-  for (unsigned short int x = 0U; x < 7U; x++) {
-    if (color == colorKeyword[x]) {
-      REQUESTED_COLOR = reqColor[x];
+  static map<string, string> colorKeyword = { {"black", "\033[1;30m"}, {"white", "\033[1;37m"}, {"cyan", "\033[1;36m"}, {"magenta", "\033[1;35m"}, {"yellow", "\033[1;33m"}, {"red", "\033[1;31m"}, {"blue", "\033[1;34m"}};
+  for (const auto &[key, val] : colorKeyword) {
+    if (color == key) {
+      REQUESTED_COLOR = val;
       break;
     }
   }
