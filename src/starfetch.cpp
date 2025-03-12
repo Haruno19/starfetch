@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
 
 static void setColor(string color)
 {
-  static map<string, string> colorKeyword = { {"black", "\033[1;30m"}, {"white", "\033[1;37m"}, {"cyan", "\033[1;36m"}, {"magenta", "\033[1;35m"}, {"yellow", "\033[1;33m"}, {"red", "\033[1;31m"}, {"blue", "\033[1;34m"}};
+  static map<string, string> colorKeyword = { {"black", "\033[1;30m"}, {"white", "\033[1;37m"}, {"cyan", "\033[1;36m"}, {"magenta", "\033[1;35m"}, {"yellow", "\033[1;33m"}, {"green", "\033[1;32m"}, {"red", "\033[1;31m"}, {"blue", "\033[1;34m"}};
   for (const auto &[key, val] : colorKeyword) {
     if (color == key) {
       REQUESTED_COLOR = val;
