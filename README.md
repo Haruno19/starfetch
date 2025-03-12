@@ -109,6 +109,8 @@ Compilation process on Windows relies on [MingW](https://www.mingw-w64.org). Fol
 - After the compilation  has finished, press ```CTRL + \` ``` and run the following commands:  
 `cp -r C:\Users\[USERNAME]\Desktop\starfetch.exe`, `C:\MingW\bin; cd C:\MingW\bin`, `.\starfetch.exe`
 
+### If on `Windows` you can compile `starfetch` and start it from the `starfetch.bat` script. If you want to start the program with specific constellation and/or different color -- open up `starfetch.bat` script and edit `C:\MingW\bin\starfetch.exe -c blue` -- it get spawned with random constellation and blue color.
+
 Alternative versions:
 - [K1ngst0m](https://github.com/K1ngst0m/starfetch): starfetch doesn't depend on the files in `/usr/local/share/starfetch/`
 
