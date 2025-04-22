@@ -11,6 +11,7 @@
 #include <random>
 #include <regex>
 #include <list>
+#include <map>
 //#include <unistd.h> for getpid()
 #include "include/json.hpp"
 
@@ -31,9 +32,8 @@ static string SEP = "\\";
 #else
 static string path = "/usr/local/share/starfetch/";
 static string SEP = "/";
-string directories[2] = {"constellations", "norse-constellations"}; // array that holds all the directory paths. Consider using a multidimensional array to hold the directory name and also the "nickname" to be used for <type> when using "starfetch -n <type> <constellation>"
 #endif // _WIN32
-
+static string directories[2] = {"constellations", "norse-constellations"}; // array that holds all the directory paths. Consider using a multidimensional array to hold the directory name and also the "nickname" to be used for <type> when using "starfetch -n <type> <constellation>"
 static string REQUESTED_COLOR = "\033[1;37m"; // white color
 
 int main(int argc, char *argv[])
@@ -113,20 +113,13 @@ int main(int argc, char *argv[])
 
 static void setColor(string color)
 {
-  if (color == "black")
-    REQUESTED_COLOR = "\033[1;30m";
-  else if (color == "white")
-    REQUESTED_COLOR = "\033[1;37m";
-  else if (color == "cyan")
-    REQUESTED_COLOR = "\033[1;36m";
-  else if (color == "magenta")
-    REQUESTED_COLOR = "\033[1;35m";
-  else if (color == "yellow")
-    REQUESTED_COLOR = "\033[1;33m";
-  else if (color == "red")
-    REQUESTED_COLOR = "\033[1;31m";
-  else if (color == "blue")
-    REQUESTED_COLOR = "\033[1;34m";
+  static map<string, string> colorKeyword = { {"black", "\033[1;30m"}, {"white", "\033[1;37m"}, {"cyan", "\033[1;36m"}, {"magenta", "\033[1;35m"}, {"yellow", "\033[1;33m"}, {"green", "\033[1;32m"}, {"red", "\033[1;31m"}, {"blue", "\033[1;34m"}};
+  for (const auto &[key, val] : colorKeyword) {
+    if (color == key) {
+      REQUESTED_COLOR = val;
+      break;
+    }
+  }
 }
 
 static inline void PrintConst(string &pathc)
