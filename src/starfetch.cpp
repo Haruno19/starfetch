@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
         {
           if (argc == 2)
           {
-            cout << "Available colors are: black, white, cyan, magenta, yellow, red, blue" << endl;
+            cout << "Available colors are: black, white, cyan, magenta, yellow, green, red, blue" << endl;
             return EXIT_SUCCESS;
           }
           else if (argc == 3 || argc == 4)
