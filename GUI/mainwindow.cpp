@@ -197,6 +197,8 @@ static void setColor(string color)
         REQUESTED_COLOR = "<font color=\"magenta\">";
     else if (color == "yellow")
         REQUESTED_COLOR = "<font color=\"yellow\">";
+    else if (color == "green")
+        REQUESTED_COLOR = "<font color=\"green\">";
     else if (color == "red")
         REQUESTED_COLOR = "<font color=\"red\">";
     else if (color == "blue")
