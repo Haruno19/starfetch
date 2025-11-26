@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
         {
           if (argc == 2)
           {
-            cout << "Available colors are: black, white, cyan, magenta, yellow, green, red, blue" << endl;
+            cout << "Available colors are: black, white, cyan, magenta, yellow, red, blue, green" << endl;
             return EXIT_SUCCESS;
           }
           else if (argc == 3 || argc == 4)
@@ -162,7 +162,7 @@ static inline void PrintConst(string &pathc)
     cerr << "Error: Could not open file '" << lastConst << "' for writing.\n";
     return;
   }
-  outToConstFile << regex_replace(pathc, regex(".starfetch.txt"), "");
+  outToConstFile << pathc;
   outToConstFile.close();
 
   if(f.is_open())
