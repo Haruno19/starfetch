@@ -1,4 +1,4 @@
-# starfetch
+# starfetch [![C/C++ CI](https://github.com/Haruno19/starfetch/actions/workflows/c-cpp.yml/badge.svg?branch=main)](https://github.com/Haruno19/starfetch/actions/workflows/c-cpp.yml)  [![flawfinder](https://github.com/Haruno19/starfetch/actions/workflows/flawfinder.yml/badge.svg?branch=main)](https://github.com/Haruno19/starfetch/actions/workflows/flawfinder.yml)
 A command line tool written in C++ that displays constellations.
 
 ## Table of contents
