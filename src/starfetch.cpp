@@ -12,6 +12,7 @@
 #include <regex>
 #include <list>
 #include <map>
+#include <fstream>
 //#include <unistd.h> for getpid()
 #include "include/json.hpp"
 
@@ -129,6 +130,40 @@ static inline void PrintConst(string &pathc)
   stringstream strStream;
   string s, l;
   json j;
+
+  string lastConst = 
+#ifdef _WIN32
+  path
+#else
+ static_cast<string>(gentenv("HOME"))
+#endif // _WIN32
+  + ".starfetch.txt";
+  ifstream file;
+  unsigned int skipGetline = 0U;
+
+  file.open(lastConst, ios::in);
+  if (!file.is_open())
+  {
+    skipGetline = 1U;
+  }
+  string str = "";
+  if (skipGetline == 0U)
+  {
+    getline(file, str);
+    file.close();
+  }
+  while (pathc == str)
+  {
+    pathc = RandomConstRefactor();
+  }
+  ofstream outToConstFile(lastConst, ios::out);
+  if (!outToConstFile)
+  {
+    cerr << "Error: Could not open file '" << lastConst << "' for writing.\n";
+    return;
+  }
+  outToConstFile << regex_replace(pathc, regex(".starfetch.txt"), "");
+  outToConstFile.close();
 
   if(f.is_open())
   {
