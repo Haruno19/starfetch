@@ -12,6 +12,7 @@
 #include <regex>
 #include <list>
 #include <map>
+#include <fstream>
 //#include <unistd.h> for getpid()
 #include "include/json.hpp"
 
@@ -139,19 +140,18 @@ static inline void PrintConst(string &pathc)
   + ".starfetch.txt";
   ifstream file;
   unsigned int skipGetline = 0U;
-
+  string str = "";
   file.open(lastConst, ios::in);
   if (!file.is_open())
   {
     skipGetline = 1U;
   }
-  string str = "";
   if (skipGetline == 0U)
   {
     getline(file, str);
     file.close();
   }
-  while (pathc == str)
+  while (pathc == str && !strncmp(pathc.c_str(), path.c_str(), 6))
   {
     pathc = RandomConstRefactor();
   }
