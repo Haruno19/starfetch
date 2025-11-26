@@ -122,7 +122,7 @@ starfetch [OPTION] [ARGUMENT]
     -n      Shows the selected constellation.
     -r      Shows a random constellation.
     -l      Prints the list of all the available constellations.
-    -c      Use given color such as: black, white, cyan, magenta, yellow, red, blue.
+    -c      Use given color such as: black, white, cyan, magenta, yellow, green, red, blue.
 
 If launched with no arguments, the behaviour is the same as with '-c white -r'.
 
@@ -236,7 +236,8 @@ Although relying on external libraries, no dependencies are needed to install st
 * Credits to [Vega Deftwing](https://github.com/VegaDeftwing) for creating the JSON file for the ``lyra`` constellation!
 * Credits to [Nathan Richard](https://github.com/naTariks) for creating the JSON file for the ``monoceros`` constellation!
 * Credits to [Andreas Grafen](https://github.com/andreasgrafen) for creating the JSON file for the ``canes_venatici`` constellation!
-* Credits tp [Munimul](https://github.com/Munimul) for creating the JSON files for the ``andromeda``, ``auriga``, ``aquila``, ``caelum``, ``camelopardalis``, ``canis_major``, ``canis_minor``,  ``carina``, ``centaurus`` and ``circinus`` constalltions!
+* Credits to [Munimul](https://github.com/Munimul) for creating the JSON files for the ``andromeda``, ``auriga``, ``aquila``, ``caelum``, ``camelopardalis``, ``canis_major``, ``canis_minor``,  ``carina``, ``centaurus`` and ``circinus`` constalltions!
+* Credits to [Maia Woolf](https://github.com/maia-woolf) for fixing the help message, adding the instruction for missing colors! 
 
 Very huge thanks to [su8](https://github.com/su8) for optimizing and polishing starfetch's code, adding compatibility for Windows systems and the related detailed documentation, and developing the graphical version of starfetch! 
 
