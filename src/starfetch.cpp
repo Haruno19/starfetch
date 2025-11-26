@@ -135,7 +135,7 @@ static inline void PrintConst(string &pathc)
 #ifdef _WIN32
   path
 #else
- static_cast<string>(gentenv("HOME"))
+ static_cast<string>(getenv("HOME"))
 #endif // _WIN32
   + ".starfetch.txt";
   ifstream file;
