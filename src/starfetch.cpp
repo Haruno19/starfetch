@@ -152,7 +152,7 @@ static inline void PrintConst(string &pathc)
   }
   while (pathc == str)
   {
-    pathc = RandomConstRefactor();
+    pathc = path + RandomConstRefactor();
   }
   ofstream outToConstFile(lastConst, ios::out);
   if (!outToConstFile)
@@ -162,7 +162,7 @@ static inline void PrintConst(string &pathc)
   }
   if (strncmp(pathc.c_str(), path.c_str(), 6))
   {
-    pathc = RandomConstRefactor();
+    pathc = path + RandomConstRefactor();
   }
   outToConstFile << pathc;
   outToConstFile.close();
