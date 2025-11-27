@@ -150,7 +150,7 @@ static inline void PrintConst(string &pathc)
     getline(file, str);
     file.close();
   }
-  while (pathc == str)
+  while (pathc == str || strncmp(pathc.c_str(), path.c_str(), 6))
   {
     pathc = path + RandomConstRefactor();
   }
@@ -159,10 +159,6 @@ static inline void PrintConst(string &pathc)
   {
     cerr << "Error: Could not open file '" << lastConst << "' for writing.\n";
     return;
-  }
-  if (strncmp(pathc.c_str(), path.c_str(), 6))
-  {
-    pathc = path + RandomConstRefactor();
   }
   outToConstFile << pathc;
   outToConstFile.close();
