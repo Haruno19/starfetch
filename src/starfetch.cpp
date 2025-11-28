@@ -150,7 +150,7 @@ static inline void PrintConst(string &pathc)
     getline(file, str);
     file.close();
   }
-  while (pathc == str || strncmp(pathc.c_str(), path.c_str(), 6))
+  while (pathc == str)
   {
     pathc = path + RandomConstRefactor();
   }
