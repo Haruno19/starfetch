@@ -228,8 +228,8 @@ static string RandomConstRefactor()
 
   for (const auto & entry : filesystem::directory_iterator(path + directories[random_dir] + SEP))
   {
-    pos = entry.path().u8string().find(directories[random_dir] + SEP);
-    s = entry.path().u8string().substr(pos);
+    pos = entry.path().string().find(directories[random_dir] + SEP);
+    s = entry.path().string().substr(pos);
     file_list.push_back(s);
     directoryLength++;
   }
@@ -284,7 +284,7 @@ static void PrintList()
   cout << "\n" + REQUESTED_COLOR + "✦ available " + directories[i] + "\033[0;0m:" << endl;
     for (const auto & entry : filesystem::directory_iterator(path + directories[i] + SEP))
     {
-      s = entry.path().u8string().substr(entry.path().u8string().find("constellations" + SEP)+15); //from "/usr/local/opt/starfetch/res/constellations/xxxxxx" to "xxxxxx"
+      s = entry.path().string().substr(entry.path().string().find("constellations" + SEP)+15); //from "/usr/local/opt/starfetch/res/constellations/xxxxxx" to "xxxxxx"
       s = s.substr(0, s.length()-5);
       if(s != ".DS_")    cout << REQUESTED_COLOR + s + "\033[0;0m" << endl;
     }
