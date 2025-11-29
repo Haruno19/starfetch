@@ -35,12 +35,16 @@ static string SEP = "/";
 #endif // _WIN32
 static string directories[2] = {"constellations", "norse-constellations"}; // array that holds all the directory paths. Consider using a multidimensional array to hold the directory name and also the "nickname" to be used for <type> when using "starfetch -n <type> <constellation>"
 static string REQUESTED_COLOR = "\033[1;37m"; // white color
+static unsigned int useRandomConst = 0U;
 
 int main(int argc, char *argv[])
 {
   string pathc = path;    //path to the constellation file
   if(argc == 1)   //if there's no additional arguments
+  {
     pathc += RandomConstRefactor(); //selects a random constellation
+    useRandomConst = 1U;
+  }
   else
     switch(argv[1][1])  //gets the time of the argument (the 'n' in "-n")
     {
@@ -67,11 +71,17 @@ int main(int argc, char *argv[])
         Help();
         return EXIT_SUCCESS;
       case 't':
+      {
         pathc += RandomConstRefactor();
+        useRandomConst = 1U;
+      }
         //return EXIT_SUCCESS;
         break;
       case 'r':
+      {
         pathc += RandomConstRefactor(); //with the '-r' option, it selects a random constellation
+        useRandomConst = 1U;
+      }
         break;
       case 'l':
         PrintList();
@@ -94,6 +104,7 @@ int main(int argc, char *argv[])
             }
 
             pathc += RandomConstRefactor();
+            useRandomConst = 1U;
           }
           else
           {
@@ -166,7 +177,7 @@ static inline void PrintConst(string &pathc)
     }
     shuffle(listWithConst.begin(), listWithConst.end(), gen);
   }
-  pathc = listWithConst[0];
+  pathc = (useRandomConst == 1U) ? listWithConst[0] : pathc;
   listWithConst.erase(listWithConst.begin());
   for (const auto &entry : listWithConst)
   {
