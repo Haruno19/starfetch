@@ -124,44 +124,55 @@ static void setColor(string color)
 
 static inline void PrintConst(string &pathc)
 {
-  ifstream c(pathc);  //opens the file containing constellation info
+  
   ifstream f(path+"template");    //opens the output template file
   stringstream strStream;
   string s, l;
   json j;
 
-  string lastConst = 
+  string ConstSet = 
 #ifdef _WIN32
   path
 #else
  static_cast<string>(getenv("HOME")) + static_cast<string>("/")
 #endif // _WIN32
-  + ".starfetch.txt";
+  + static_cast<string>(".fileToParseWithConstellations.txt");
+
   ifstream file;
-  unsigned int skipGetline = 0U;
-  string str = "";
-  file.open(lastConst, ios::in);
-  if (!file.is_open())
-  {
-    skipGetline = 1U;
+  string str;
+  vector<string> listWithConst;
+  vector<string> listWithConst2;
+  std::random_device rd;
+  std::mt19937 gen(rd());
+
+  file.open(ConstSet, ios::in);
+  while (getline(file, str)) {
+    listWithConst.emplace_back(str);
   }
-  if (skipGetline == 0U)
-  {
-    getline(file, str);
-    file.close();
+  file.close();
+  ofstream setFile(ConstSet, ios::out);
+  if (listWithConst.empty()) {    
+    if (!setFile) {
+      cerr << "Error: Could not open or create file '" << ConstSet << "'\n";
+      return;
+    }
+    for (const auto &entry : filesystem::directory_iterator(path + directories[0] + SEP))
+    {
+      listWithConst.emplace_back(entry.path().string());
+    }
+    for (const auto &entry : filesystem::directory_iterator(path + directories[1] + SEP))
+    {
+      listWithConst.emplace_back(entry.path().string());
+    }
+    shuffle(listWithConst.begin(), listWithConst.end(), gen);
   }
-  while (pathc == str)
+  pathc = listWithConst[0];
+  listWithConst.erase(listWithConst.begin());
+  for (const auto &entry : listWithConst)
   {
-    pathc = path + RandomConstRefactor();
+    setFile << entry << endl;
   }
-  ofstream outToConstFile(lastConst, ios::out);
-  if (!outToConstFile)
-  {
-    cerr << "Error: Could not open file '" << lastConst << "' for writing.\n";
-    return;
-  }
-  outToConstFile << pathc;
-  outToConstFile.close();
+  setFile.close();
 
   if(f.is_open())
   {
@@ -171,6 +182,7 @@ static inline void PrintConst(string &pathc)
     f.close();  //closes the template
   }
 
+  ifstream c(pathc);  //opens the file containing constellation info
   if(c.is_open())
   {
     c >> j;     //parse the selected JSON file
