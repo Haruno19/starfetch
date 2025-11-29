@@ -149,11 +149,14 @@ static inline void PrintConst(string &pathc)
   std::random_device rd;
   std::mt19937 gen(rd());
 
-  file.open(ConstSet, ios::in);
-  while (getline(file, str)) {
-    listWithConst.emplace_back(str);
+  if (filesystem::exists(ConstSet) && filesystem::is_regular_file(ConstSet))
+  {
+    file.open(ConstSet, ios::in);
+    while (getline(file, str)) {
+      listWithConst.emplace_back(str);
+    }
+    file.close();
   }
-  file.close();
 
   ofstream setFile(ConstSet, ios::out);
   if (!setFile)

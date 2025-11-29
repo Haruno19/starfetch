@@ -64,7 +64,7 @@ Compilation process on Windows relies on [MingW](https://www.mingw-w64.org). Fol
         "command": "C:\\MingW\\bin\\g++.exe",
         "args": [
             "-fdiagnostics-color=always",
-            "-std=c++17",
+            "-std=c++20",
             "-ggdb",
             "-lpthread",
             "-Wall",
