@@ -163,13 +163,11 @@ static inline void PrintConst(string &pathc)
   }
 
   if (listWithConst.empty()) {
-    for (const auto &entry : filesystem::directory_iterator(path + directories[0] + SEP))
-    {
-      listWithConst.emplace_back(entry.path().string());
-    }
-    for (const auto &entry : filesystem::directory_iterator(path + directories[1] + SEP))
-    {
-      listWithConst.emplace_back(entry.path().string());
+    for (unsigned int x = 0U; x < 2U; x++) {
+      for (const auto &entry : filesystem::directory_iterator(path + directories[x] + SEP))
+      {
+        listWithConst.emplace_back(entry.path().string());
+      }
     }
     shuffle(listWithConst.begin(), listWithConst.end(), gen);
   }
