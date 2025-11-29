@@ -42,7 +42,6 @@ int main(int argc, char *argv[])
   string pathc = path;    //path to the constellation file
   if(argc == 1)   //if there's no additional arguments
   {
-    pathc += RandomConstRefactor(); //selects a random constellation
     useRandomConst = 1U;
   }
   else
@@ -72,14 +71,12 @@ int main(int argc, char *argv[])
         return EXIT_SUCCESS;
       case 't':
       {
-        pathc += RandomConstRefactor();
         useRandomConst = 1U;
       }
         //return EXIT_SUCCESS;
         break;
       case 'r':
       {
-        pathc += RandomConstRefactor(); //with the '-r' option, it selects a random constellation
         useRandomConst = 1U;
       }
         break;
@@ -103,7 +100,6 @@ int main(int argc, char *argv[])
               return EXIT_SUCCESS;
             }
 
-            pathc += RandomConstRefactor();
             useRandomConst = 1U;
           }
           else
@@ -227,75 +223,6 @@ static inline void PrintConst(string &pathc)
   }else
     Error("", 2);
 }
-
-
-static string RandomConstRefactor()
-{
-
-// I'm not a C++ programmer at all, so this is probably super messy, but it works
-// refer to the lisp version to get an idea of what to do for the logic
-// then reimplement it in C++
-
-  int size_of_directories = sizeof(directories)/sizeof(string);
-  int directoryLength = 0;
-
-  std::random_device rd;
-  std::mt19937 e(rd());
-  std::uniform_int_distribution<int> randdir(0, (size_of_directories - 1));
-  auto random_dir = randdir(e);
-
-  size_t pos;
-  string s;
-
-  std::list<string> file_list; // list of files to be populated in loop, depending on what the rng decided the directory to be
-
-  for (const auto & entry : filesystem::directory_iterator(path + directories[random_dir] + SEP))
-  {
-    pos = entry.path().string().find(directories[random_dir] + SEP);
-    s = entry.path().string().substr(pos);
-    file_list.push_back(s);
-    directoryLength++;
-  }
-
-  std::uniform_int_distribution<int> randfile(0, (directoryLength - 1));
-  auto random_file = randfile(e);
-  std::list<string>::iterator itr = file_list.begin();
-
-  for (int i = 0; i < random_file; i++)
-  {
-    if (directoryLength == 1 || directoryLength == 0)
-    {
-      break; // don't iterate, if the directory only has one or 0 items
-    } else {
-      ++itr;
-    }
-  }
-
-  return *itr;
-}
-
-
-/*static string RandomConst()
-{
-  //srand(static_cast<unsigned int>(time(NULL)) ^ static_cast<unsigned int>(getpid()));
-  std::random_device rd;
-  std::mt19937 e{rd()};
-  std::uniform_int_distribution<int> udist(0, 11);
-  size_t pos;
-  string s;
-
-  //SHOULD BE IMPROVED IN THE FUTURE
-  //gets every constellation name in the "constellation/" directory, and exits when two randomly generated numbers are equal, resulting in picking a random file
-  for (const auto & entry : filesystem::directory_iterator(path+"constellations" + SEP))
-  {
-    pos = entry.path().u8string().find("constellations" + SEP);
-    s = entry.path().u8string().substr(pos);
-    if(s != "constellations/.DS_Store" && udist(e) == udist(e))
-      break;
-  }
-  
-  return s;
-}*/
 
 static void PrintList()
 {
