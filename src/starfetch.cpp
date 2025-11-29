@@ -154,12 +154,15 @@ static inline void PrintConst(string &pathc)
     listWithConst.emplace_back(str);
   }
   file.close();
+
   ofstream setFile(ConstSet, ios::out);
+  if (!setFile)
+  {
+    cerr << "Error: Could not open or create file '" << ConstSet << "'\n";
+    return;
+  }
+
   if (listWithConst.empty()) {
-    if (!setFile) {
-      cerr << "Error: Could not open or create file '" << ConstSet << "'\n";
-      return;
-    }
     for (const auto &entry : filesystem::directory_iterator(path + directories[0] + SEP))
     {
       listWithConst.emplace_back(entry.path().string());
