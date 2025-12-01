@@ -20,8 +20,6 @@ using json = nlohmann::json;
 
 static void setColor(string color); //sets given color to the REQUESTED_COLOR variable to colorize the output constellation
 static inline void PrintConst(string &pathc);  //formats the template file with the requested data and prints out the constellation info
-//static string RandomConst();   //select a random constellation from the available ones
-static string RandomConstRefactor();   //select a random constellation from the available ones
 static void PrintList();   //prints out the list of the available constellations
 static void Error(const char *err, int type);   //shows an error message
 static void Help();    //prints out the help message
@@ -35,12 +33,15 @@ static string SEP = "/";
 #endif // _WIN32
 static string directories[2] = {"constellations", "norse-constellations"}; // array that holds all the directory paths. Consider using a multidimensional array to hold the directory name and also the "nickname" to be used for <type> when using "starfetch -n <type> <constellation>"
 static string REQUESTED_COLOR = "\033[1;37m"; // white color
+static unsigned int useRandomConst = 0U; /* controls whether to use the list with constellations or the input one */
 
 int main(int argc, char *argv[])
 {
   string pathc = path;    //path to the constellation file
   if(argc == 1)   //if there's no additional arguments
-    pathc += RandomConstRefactor(); //selects a random constellation
+  {
+    useRandomConst = 1U;
+  }
   else
     switch(argv[1][1])  //gets the time of the argument (the 'n' in "-n")
     {
@@ -67,11 +68,15 @@ int main(int argc, char *argv[])
         Help();
         return EXIT_SUCCESS;
       case 't':
-        pathc += RandomConstRefactor();
+      {
+        useRandomConst = 1U;
+      }
         //return EXIT_SUCCESS;
         break;
       case 'r':
-        pathc += RandomConstRefactor(); //with the '-r' option, it selects a random constellation
+      {
+        useRandomConst = 1U;
+      }
         break;
       case 'l':
         PrintList();
@@ -80,7 +85,7 @@ int main(int argc, char *argv[])
         {
           if (argc == 2)
           {
-            cout << "Available colors are: black, white, cyan, magenta, yellow, green, red, blue" << endl;
+            cout << "Available colors are: black, white, cyan, magenta, yellow, red, blue, green" << endl;
             return EXIT_SUCCESS;
           }
           else if (argc == 3 || argc == 4)
@@ -93,7 +98,7 @@ int main(int argc, char *argv[])
               return EXIT_SUCCESS;
             }
 
-            pathc += RandomConstRefactor();
+            useRandomConst = 1U;
           }
           else
           {
@@ -124,11 +129,58 @@ static void setColor(string color)
 
 static inline void PrintConst(string &pathc)
 {
-  ifstream c(pathc);  //opens the file containing constellation info
+  
   ifstream f(path+"template");    //opens the output template file
   stringstream strStream;
   string s, l;
   json j;
+
+  string ConstSet = 
+#ifdef _WIN32
+  path
+#else
+ static_cast<string>(getenv("HOME")) + static_cast<string>("/")
+#endif // _WIN32
+  + static_cast<string>(".fileToParseWithConstellations.txt");
+
+  ifstream file;
+  string str;
+  vector<string> listWithConst;
+  std::random_device rd;
+  std::mt19937 gen(rd());
+
+  if (filesystem::exists(ConstSet) && filesystem::is_regular_file(ConstSet))
+  {
+    file.open(ConstSet, ios::in);
+    while (getline(file, str)) {
+      listWithConst.emplace_back(str);
+    }
+    file.close();
+  }
+
+  ofstream setFile(ConstSet, ios::out);
+  if (!setFile)
+  {
+    cerr << "Error: Could not open or create file '" << ConstSet << "'\n";
+    return;
+  }
+
+  if (listWithConst.empty()) {
+    for (unsigned int x = 0U; x < 2U; x++) {
+      for (const auto &entry : filesystem::directory_iterator(path + directories[x] + SEP))
+      {
+        listWithConst.emplace_back(entry.path().string());
+      }
+    }
+    shuffle(listWithConst.begin(), listWithConst.end(), gen);
+  }
+  pathc = (useRandomConst == 1U) ? listWithConst[0] : pathc;
+  listWithConst.erase(listWithConst.begin());
+  for (const auto &entry : listWithConst)
+  {
+    setFile << entry << endl;
+  }
+  setFile.close();
 
   if(f.is_open())
   {
@@ -138,6 +190,7 @@ static inline void PrintConst(string &pathc)
     f.close();  //closes the template
   }
 
+  ifstream c(pathc);  //opens the file containing constellation info
   if(c.is_open())
   {
     c >> j;     //parse the selected JSON file
@@ -172,75 +225,6 @@ static inline void PrintConst(string &pathc)
     Error("", 2);
 }
 
-
-static string RandomConstRefactor()
-{
-
-// I'm not a C++ programmer at all, so this is probably super messy, but it works
-// refer to the lisp version to get an idea of what to do for the logic
-// then reimplement it in C++
-
-  int size_of_directories = sizeof(directories)/sizeof(string);
-  int directoryLength = 0;
-
-  std::random_device rd;
-  std::mt19937 e(rd());
-  std::uniform_int_distribution<int> randdir(0, (size_of_directories - 1));
-  auto random_dir = randdir(e);
-
-  size_t pos;
-  string s;
-
-  std::list<string> file_list; // list of files to be populated in loop, depending on what the rng decided the directory to be
-
-  for (const auto & entry : filesystem::directory_iterator(path + directories[random_dir] + SEP))
-  {
-    pos = entry.path().u8string().find(directories[random_dir] + SEP);
-    s = entry.path().u8string().substr(pos);
-    file_list.push_back(s);
-    directoryLength++;
-  }
-
-  std::uniform_int_distribution<int> randfile(0, (directoryLength - 1));
-  auto random_file = randfile(e);
-  std::list<string>::iterator itr = file_list.begin();
-
-  for (int i = 0; i < random_file; i++)
-  {
-    if (directoryLength == 1 || directoryLength == 0)
-    {
-      break; // don't iterate, if the directory only has one or 0 items
-    } else {
-      ++itr;
-    }
-  }
-
-  return *itr;
-}
-
-
-/*static string RandomConst()
-{
-  //srand(static_cast<unsigned int>(time(NULL)) ^ static_cast<unsigned int>(getpid()));
-  std::random_device rd;
-  std::mt19937 e{rd()};
-  std::uniform_int_distribution<int> udist(0, 11);
-  size_t pos;
-  string s;
-
-  //SHOULD BE IMPROVED IN THE FUTURE
-  //gets every constellation name in the "constellation/" directory, and exits when two randomly generated numbers are equal, resulting in picking a random file
-  for (const auto & entry : filesystem::directory_iterator(path+"constellations" + SEP))
-  {
-    pos = entry.path().u8string().find("constellations" + SEP);
-    s = entry.path().u8string().substr(pos);
-    if(s != "constellations/.DS_Store" && udist(e) == udist(e))
-      break;
-  }
-  
-  return s;
-}*/
-
 static void PrintList()
 {
   string s;
@@ -251,7 +235,7 @@ static void PrintList()
   cout << "\n" + REQUESTED_COLOR + "✦ available " + directories[i] + "\033[0;0m:" << endl;
     for (const auto & entry : filesystem::directory_iterator(path + directories[i] + SEP))
     {
-      s = entry.path().u8string().substr(entry.path().u8string().find("constellations" + SEP)+15); //from "/usr/local/opt/starfetch/res/constellations/xxxxxx" to "xxxxxx"
+      s = entry.path().string().substr(entry.path().string().find("constellations" + SEP)+15); //from "/usr/local/opt/starfetch/res/constellations/xxxxxx" to "xxxxxx"
       s = s.substr(0, s.length()-5);
       if(s != ".DS_")    cout << REQUESTED_COLOR + s + "\033[0;0m" << endl;
     }

@@ -1,6 +1,6 @@
 SRC = src/starfetch.cpp
 #CC = g++
-CFLAGS = -Wall -Wextra -O2 -ggdb -std=c++17 -pipe -pedantic -Wundef -Wshadow -W -Wwrite-strings -Wcast-align -Wstrict-overflow=5 -Wconversion -Wpointer-arith -Wformat=2 -Wsign-compare -Wendif-labels -Wredundant-decls -Winit-self
+CFLAGS = -Wall -Wextra -O2 -ggdb -std=c++20 -pipe -pedantic -Wundef -Wshadow -W -Wwrite-strings -Wcast-align -Wstrict-overflow=5 -Wconversion -Wpointer-arith -Wformat=2 -Wsign-compare -Wendif-labels -Wredundant-decls -Winit-self
 INSTALL_DIR = /usr/local/share
 BIN_DIR = /usr/local/bin
 
