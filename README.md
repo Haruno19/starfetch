@@ -239,7 +239,7 @@ Although relying on external libraries, no dependencies are needed to install st
 * Credits to [Munimul](https://github.com/Munimul) for creating the JSON files for the ``andromeda``, ``auriga``, ``aquila``, ``caelum``, ``camelopardalis``, ``canis_major``, ``canis_minor``,  ``carina``, ``centaurus`` and ``circinus`` constalltions!
 * Credits to [Maia Woolf](https://github.com/maia-woolf) for fixing the help message, adding the instruction for missing colors! 
 
-Very huge thanks to [su8](https://github.com/su8) for optimizing and polishing starfetch's code, adding compatibility for Windows systems and the related detailed documentation, and developing the graphical version of starfetch and adding requested color to the constellations! 
+Very huge thanks to [su8](https://github.com/su8) for optimizing and polishing starfetch's code, adding compatibility for Windows systems and the related detailed documentation, and developing the graphical version of starfetch, adding requested color to the constellations and added code to translate the program in other languages (Bulgarian was donated by him) Also the bug once you start the program and it generates random constellation and re-run it again was showing the same constellation. He fixed it and made a simple `.txt` file to use for the remaining constellations that must be shown when requesting random one ! 
 
 Huge thanks to [Belaja-akacija](https://github.com/belaja-akacija) for adding the functionality to select from different types of constellations, adding the Norse constellations collection and creating the JSON files for the ``friggerock`` norse constellation, and refactoring and polishing starfetch's code!
 

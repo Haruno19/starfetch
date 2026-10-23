@@ -1,12 +1,12 @@
 ┌%0┐
 │%1│
-│%2│      requestedColor%11^[0m
+│%2│      requestedColor%11^[0;0m
 │%3│      
-│%4│      requestedColorQuadrant^[0m: %12
-│%5│      requestedColorRight ascension^[0m: %13
-│%6│      requestedColorDeclination^[0m: %14
-│%7│      requestedColorArea^[0m: %15
-│%8│      requestedColorMain stars^[0m: %16
+│%4│      requestedColorQuadrant^[0;0m: %12
+│%5│      requestedColorRight ascension^[0;0m: %13
+│%6│      requestedColorDeclination^[0;0m: %14
+│%7│      requestedColorArea^[0;0m: %15
+│%8│      requestedColorMain stars^[0;0m: %16
 │%9│
 │%10│
 └──────────────────────┘
