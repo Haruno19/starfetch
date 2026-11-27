@@ -33,7 +33,10 @@ static std::string trim(std::string str); // trim excess quotes
 static string path = "C:\\starfetch\\";
 static string SEP = "\\";
 #else
-static string path = "/usr/local/share/starfetch/";
+#ifndef STARFETCH_DATA_DIR
+#define STARFETCH_DATA_DIR "/usr/local/share/starfetch/" // override at build time with: make DATA_DIR=/some/path/
+#endif
+static string path = STARFETCH_DATA_DIR;
 static string SEP = "/";
 #endif // _WIN32
 static string directories[2] = {"constellations", "norse-constellations"}; // array that holds all the directory paths. Consider using a multidimensional array to hold the directory name and also the "nickname" to be used for <type> when using "starfetch -n <type> <constellation>"
@@ -53,39 +56,43 @@ int main(int argc, char *argv[])
 
 int run(int argc, char *argv[])
 {
-  string requestedLang = "none";
-  string pathc = path;    //path to the constellation file
-  if (argc >= 2) { requestedLang = string(argv[1]); }
-  unsigned int foundRequestedLanguage = 0U;
-  if (requestedLang == "en" || requestedLang == "bg" || requestedLang == "it") { userLang = requestedLang; foundRequestedLanguage = 1U; }
   if (!cfg) { cerr << "Error: Could not open " << configLangs << "\n"; return EXIT_FAILURE; }
-  if(argc == 1 || argc == 2)   //if there's no additional arguments
+  cfg >> config;  //parse the translations
+  cfg.close();
+
+  //an optional first argument selects the language (any top-level key in langs.json, e.g. "en" or "bg")
+  //consume it and shift the remaining arguments, so the option parsing below stays the same
+  if (argc >= 2 && argv[1][0] != '-' && config.contains(argv[1]))
+  {
+    userLang = argv[1];
+    argv[1] = argv[0];
+    argv++;
+    argc--;
+  }
+
+  string pathc = path;    //path to the constellation file
+  if(argc == 1)   //if there's no additional arguments
   {
     useRandomConst = 1U;
-    if (argc == 2 && !strcmp(argv[1], "-l"))
-    {
-      PrintList();
-      return EXIT_SUCCESS;
-    }
   }
-  else {
-    switch(argv[foundRequestedLanguage == 0 ? 1 : 2][1])  //gets the time of the argument (the 'n' in "-n")
+  else
+    switch(argv[1][1])  //gets the time of the argument (the 'n' in "-n")
     {
       case 'p':
         {
-          if(argc < (foundRequestedLanguage == 0 ? 3 : 4)) Error(" ", 0); //if the user requested a '-n' argument but didn't provide a name, an error occurs
-          pathc += directories[0] + SEP + argv[foundRequestedLanguage == 0 ? 2 : 3] + ".json"; //updating the path to the constellations folder and adding the name of the requested constallation to the pathc
+          if(argc < 3) Error(" ", 0); //if the user requested a '-n' argument but didn't provide a name, an error occurs
+          pathc += directories[0] + SEP + argv[2] + ".json"; //updating the path to the constellations folder and adding the name of the requested constallation to the pathc
         }
         break;
 
         // Refactored -n
       case 'n':
         {
-          if(argc < (foundRequestedLanguage == 0 ? 3 : 4)) Error(" ", 0); //if the user requested a '-p' argument but didn't provide a name, an error occurs
-          if (static_cast<string>(argv[foundRequestedLanguage == 0 ? 2 : 3]) == "norse" && !(argc < 4)){
-          pathc += directories[1] + SEP + argv[foundRequestedLanguage == 0 ? 3 : 4] + ".json"; //updating the path to the constellations folder and adding the name of the requested constallation to the pathc
+          if(argc < 3) Error(" ", 0); //if the user requested a '-p' argument but didn't provide a name, an error occurs
+          if (static_cast<string>(argv[2]) == "norse" && !(argc < 4)){
+          pathc += directories[1] + SEP + argv[3] + ".json"; //updating the path to the constellations folder and adding the name of the requested constallation to the pathc
           } else {
-          pathc += directories[0] + SEP + argv[foundRequestedLanguage == 0 ? 2 : 3] + ".json"; // if user didn't specify what constellation tradition, use default constellations
+          pathc += directories[0] + SEP + argv[2] + ".json"; // if user didn't specify what constellation tradition, use default constellations
           }
         }
         break;
@@ -104,18 +111,21 @@ int run(int argc, char *argv[])
         useRandomConst = 1U;
       }
         break;
+      case 'l':
+        PrintList();
+        return EXIT_SUCCESS;
       case 'c':
         {
-          if (argc == (foundRequestedLanguage == 0 ? 2 : 3))
+          if (argc == 2)
           {
             cout << "Available colors are: black, white, cyan, magenta, yellow, red, blue, green" << endl;
             return EXIT_SUCCESS;
           }
-          else if (argc == (foundRequestedLanguage == 0 ? 3 : 4) || argc == (foundRequestedLanguage == 0 ? 4 : 5))
+          else if (argc == 3 || argc == 4)
           {
-            setColor(static_cast<string>(argv[foundRequestedLanguage == 0 ? 2 : 3]));
+            setColor(static_cast<string>(argv[2]));
 
-            if (argc == (foundRequestedLanguage == 0 ? 4 : 5) && !strcmp(argv[foundRequestedLanguage == 0 ? 3 : 4], "-l"))
+            if (argc == 4 && !strcmp(argv[3], "-l"))
             {
               PrintList();
               return EXIT_SUCCESS;
@@ -125,8 +135,8 @@ int run(int argc, char *argv[])
           }
           else
           {
-            pathc += directories[0] + SEP + argv[foundRequestedLanguage == 0 ? 4 : 5] + ".json"; //updating the path to the constellations folder and adding the name of the requested constellation to the pathc
-            setColor(static_cast<string>(argv[foundRequestedLanguage == 0 ? 2 : 3]));
+            pathc += directories[0] + SEP + argv[4] + ".json"; //updating the path to the constellations folder and adding the name of the requested constellation to the pathc
+            setColor(static_cast<string>(argv[2]));
           }
         }
         break;
@@ -134,7 +144,6 @@ int run(int argc, char *argv[])
         Error(argv[1], 1);  //if the reqeusted option isn't recognized, an error occours
         break;
     }
-  }
 
   PrintConst(pathc);  //prints the constellation
   return EXIT_SUCCESS;
@@ -215,8 +224,6 @@ static inline void PrintConst(string &pathc)
   }
 
   ifstream c(pathc);  //opens the file containing constellation info
-  cfg >> config;
-  cfg.close();
   if(c.is_open())
   {
     c >> j;     //parse the selected JSON file

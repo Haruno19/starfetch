@@ -1,11 +1,13 @@
 starfetch is a command line tool that displays information about a constellation alongside its scheme.
 
-Usage: starfetch [OPTION] [ARGUMENT]
+Usage: starfetch [LANGUAGE] [OPTION] [ARGUMENT]
     -h      Prints this help message.
     -n      Shows the selected constellation.
     -r      Shows a random constellation.
     -l      Prints the list of all the available constellations.
     -c      Use given color such as: black, white, cyan, magenta, yellow, green, red, blue.
+
+LANGUAGE is optional and must come first: en (default) or bg.
 
 If launched with no arguments, the behaviour is the same as with '-c white -r'.
 
@@ -13,4 +15,5 @@ Examples:   starfetch -r
             starfetch -n orion
             starfetch -n norse karlvagn
             starfetch -c yellow
+            starfetch bg -n orion
             starfetch

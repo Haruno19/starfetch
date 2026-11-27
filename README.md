@@ -33,6 +33,12 @@ A command line tool written in C++ that displays constellations.
 
 ## Installation
 
+### Homebrew (macOS & Linux)
+
+```bash
+brew install haruno19/tap/starfetch
+```
+
 ### Manual (UNIX systems)
 
 ```bash
@@ -41,7 +47,7 @@ cd starfetch
 make -j8 # 8 cores/threads to use in parallel compile
 sudo make install
 ```
-Install directoy: ``/usr/local/share/starfetch/``.
+Install directory: ``/usr/local/share/starfetch/``. To install somewhere else, pass the same ``PREFIX`` to both steps, e.g. ``make PREFIX=$HOME/.local && make PREFIX=$HOME/.local install``.
 
 ### Manual (Windows)
 
@@ -117,12 +123,14 @@ Alternative versions:
 ## Usage
 **starfetch** accepts parameters to tweak its behaviour:
 ```
-starfetch [OPTION] [ARGUMENT]
+starfetch [LANGUAGE] [OPTION] [ARGUMENT]
     -h      Prints this help message.
     -n      Shows the selected constellation.
     -r      Shows a random constellation.
     -l      Prints the list of all the available constellations.
     -c      Use given color such as: black, white, cyan, magenta, yellow, green, red, blue.
+
+LANGUAGE is optional and must come first: en (default) or bg.
 
 If launched with no arguments, the behaviour is the same as with '-c white -r'.
 
@@ -130,8 +138,12 @@ Examples:   starfetch -r
             starfetch -n orion
             starfetch -n norse karlvagn
             starfetch -c yellow
+            starfetch bg -n orion
             starfetch
 ```
+
+### Translations
+Translated strings live in `res/langs.json` (installed next to the constellation files). Each top-level key is a language code that can be passed as the first argument; to add a language, copy the `en` block under a new key and translate its values.
 
 ## Available constellations
 
