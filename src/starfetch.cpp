@@ -17,12 +17,17 @@
 
 using namespace std;
 using json = nlohmann::json;
+json config;
+std::string userLang = "en";
+#define CONF config[userLang]
 
+static int run(int argc, char *argv[]);
 static void setColor(string color); //sets given color to the REQUESTED_COLOR variable to colorize the output constellation
 static inline void PrintConst(string &pathc);  //formats the template file with the requested data and prints out the constellation info
 static void PrintList();   //prints out the list of the available constellations
 static void Error(const char *err, int type);   //shows an error message
 static void Help();    //prints out the help message
+static std::string trim(std::string str); // trim excess quotes
 
 #ifdef _WIN32
 static string path = "C:\\starfetch\\";
@@ -34,32 +39,53 @@ static string SEP = "/";
 static string directories[2] = {"constellations", "norse-constellations"}; // array that holds all the directory paths. Consider using a multidimensional array to hold the directory name and also the "nickname" to be used for <type> when using "starfetch -n <type> <constellation>"
 static string REQUESTED_COLOR = "\033[1;37m"; // white color
 static unsigned int useRandomConst = 0U; /* controls whether to use the list with constellations or the input one */
+static string configLangs = path + string("langs.json"); // the translated strings for the chosen language that get's setup on startup
+ifstream cfg(configLangs); // the langs.json that get's opened and read from
 
 int main(int argc, char *argv[])
 {
+  try { return run(argc, argv); }
+  catch (const json::exception &e) {
+    std::cerr << "Error: " << configLangs << " is outdated or broken, copy the new langs.json from the repository (" << e.what() << ")\n";
+    return EXIT_FAILURE;
+  }
+}
+
+int run(int argc, char *argv[])
+{
+  string requestedLang = "none";
   string pathc = path;    //path to the constellation file
-  if(argc == 1)   //if there's no additional arguments
+  if (argc >= 2) { requestedLang = string(argv[1]); }
+  unsigned int foundRequestedLanguage = 0U;
+  if (requestedLang == "en" || requestedLang == "bg" || requestedLang == "it") { userLang = requestedLang; foundRequestedLanguage = 1U; }
+  if (!cfg) { cerr << "Error: Could not open " << configLangs << "\n"; return EXIT_FAILURE; }
+  if(argc == 1 || argc == 2)   //if there's no additional arguments
   {
     useRandomConst = 1U;
+    if (argc == 2 && !strcmp(argv[1], "-l"))
+    {
+      PrintList();
+      return EXIT_SUCCESS;
+    }
   }
-  else
-    switch(argv[1][1])  //gets the time of the argument (the 'n' in "-n")
+  else {
+    switch(argv[foundRequestedLanguage == 0 ? 1 : 2][1])  //gets the time of the argument (the 'n' in "-n")
     {
       case 'p':
         {
-          if(argc < 3) Error(" ", 0); //if the user requested a '-n' argument but didn't provide a name, an error occurs
-          pathc += directories[0] + SEP + argv[2] + ".json"; //updating the path to the constellations folder and adding the name of the requested constallation to the pathc
+          if(argc < (foundRequestedLanguage == 0 ? 3 : 4)) Error(" ", 0); //if the user requested a '-n' argument but didn't provide a name, an error occurs
+          pathc += directories[0] + SEP + argv[foundRequestedLanguage == 0 ? 2 : 3] + ".json"; //updating the path to the constellations folder and adding the name of the requested constallation to the pathc
         }
         break;
 
         // Refactored -n
       case 'n':
         {
-          if(argc < 3) Error(" ", 0); //if the user requested a '-p' argument but didn't provide a name, an error occurs
-          if (static_cast<string>(argv[2]) == "norse" && !(argc < 4)){
-          pathc += directories[1] + SEP + argv[3] + ".json"; //updating the path to the constellations folder and adding the name of the requested constallation to the pathc
+          if(argc < (foundRequestedLanguage == 0 ? 3 : 4)) Error(" ", 0); //if the user requested a '-p' argument but didn't provide a name, an error occurs
+          if (static_cast<string>(argv[foundRequestedLanguage == 0 ? 2 : 3]) == "norse" && !(argc < 4)){
+          pathc += directories[1] + SEP + argv[foundRequestedLanguage == 0 ? 3 : 4] + ".json"; //updating the path to the constellations folder and adding the name of the requested constallation to the pathc
           } else {
-          pathc += directories[0] + SEP + argv[2] + ".json"; // if user didn't specify what constellation tradition, use default constellations
+          pathc += directories[0] + SEP + argv[foundRequestedLanguage == 0 ? 2 : 3] + ".json"; // if user didn't specify what constellation tradition, use default constellations
           }
         }
         break;
@@ -78,21 +104,18 @@ int main(int argc, char *argv[])
         useRandomConst = 1U;
       }
         break;
-      case 'l':
-        PrintList();
-        return EXIT_SUCCESS;
       case 'c':
         {
-          if (argc == 2)
+          if (argc == (foundRequestedLanguage == 0 ? 2 : 3))
           {
             cout << "Available colors are: black, white, cyan, magenta, yellow, red, blue, green" << endl;
             return EXIT_SUCCESS;
           }
-          else if (argc == 3 || argc == 4)
+          else if (argc == (foundRequestedLanguage == 0 ? 3 : 4) || argc == (foundRequestedLanguage == 0 ? 4 : 5))
           {
-            setColor(static_cast<string>(argv[2]));
+            setColor(static_cast<string>(argv[foundRequestedLanguage == 0 ? 2 : 3]));
 
-            if (argc == 4 && !strcmp(argv[3], "-l"))
+            if (argc == (foundRequestedLanguage == 0 ? 4 : 5) && !strcmp(argv[foundRequestedLanguage == 0 ? 3 : 4], "-l"))
             {
               PrintList();
               return EXIT_SUCCESS;
@@ -102,8 +125,8 @@ int main(int argc, char *argv[])
           }
           else
           {
-            pathc += directories[0] + SEP + argv[4] + ".json"; //updating the path to the constellations folder and adding the name of the requested constellation to the pathc
-            setColor(static_cast<string>(argv[2]));
+            pathc += directories[0] + SEP + argv[foundRequestedLanguage == 0 ? 4 : 5] + ".json"; //updating the path to the constellations folder and adding the name of the requested constellation to the pathc
+            setColor(static_cast<string>(argv[foundRequestedLanguage == 0 ? 2 : 3]));
           }
         }
         break;
@@ -111,6 +134,7 @@ int main(int argc, char *argv[])
         Error(argv[1], 1);  //if the reqeusted option isn't recognized, an error occours
         break;
     }
+  }
 
   PrintConst(pathc);  //prints the constellation
   return EXIT_SUCCESS;
@@ -191,6 +215,8 @@ static inline void PrintConst(string &pathc)
   }
 
   ifstream c(pathc);  //opens the file containing constellation info
+  cfg >> config;
+  cfg.close();
   if(c.is_open())
   {
     c >> j;     //parse the selected JSON file
@@ -203,6 +229,53 @@ static inline void PrintConst(string &pathc)
     s.replace(s.find("%15"), string("%15").size(), j["area"].get<string>());
     s.replace(s.find("%16"), string("%16").size(), j["main stars"].get<string>());
 
+    map<string, string> constellationsKeywords = {
+      {"Asar Bardagi", trim(CONF["asarBardagi"])}, 
+      {"Ulf's Keptr", trim(CONF["ulfsKeptr"])}, 
+      {"Kvennavagn", trim(CONF["kvennavagn"])}, 
+      {"Karlavagn", trim(CONF["karlavagn"])}, 
+      {"Friggerock", trim(CONF["friggerock"])}, 
+      {"Andromeda", trim(CONF["andromeda"])}, 
+      {"Virgo", trim(CONF["virgo"])}, 
+      {"Ursa Minor", trim(CONF["ursaMinor"])}, 
+      {"Ursa Major", trim(CONF["ursaMajor"])}, 
+      {"Taurus", trim(CONF["taurus"])}, 
+      {"Scorpio", trim(CONF["scorpio"])}, 
+      {"Sagittarius", trim(CONF["sagittarius"])}, 
+      {"Puppis", trim(CONF["puppis"])}, 
+      {"Pisces", trim(CONF["pisces"])}, 
+      {"Orion", trim(CONF["orion"])}, 
+      {"Ophiuchus", trim(CONF["ophiuchus"])}, 
+      {"Monoceros", trim(CONF["monoceros"])}, 
+      {"Lyra", trim(CONF["lyra"])}, 
+      {"Lupus", trim(CONF["lupus"])}, 
+      {"Libra", trim(CONF["libra"])}, 
+      {"Leo", trim(CONF["leo"])}, 
+      {"Gemini", trim(CONF["gemini"])},   
+      {"Cygnus", trim(CONF["cygnus"])}, 
+      {"Crux", trim(CONF["crux"])}, 
+      {"Corona Borealis", trim(CONF["coronaBorealis"])}, 
+      {"Circinus", trim(CONF["circinus"])}, 
+      {"Centaurus", trim(CONF["centaurus"])}, 
+      {"Cassiopeia", trim(CONF["cassiopeia"])}, 
+      {"Carina", trim(CONF["carina"])},
+      {"Capricorn", trim(CONF["capricorn"])}, 
+      {"Canis Minor", trim(CONF["canisMinor"])}, 
+      {"Canis Major", trim(CONF["canisMajor"])},
+      {"Canes Venatici", trim(CONF["canesVenatici"])}, 
+      {"Cancer", trim(CONF["cancer"])}, 
+      {"Camelopardalis", trim(CONF["camelopardalis"])},
+      {"Caelum", trim(CONF["caelum"])}, 
+      {"Auriga", trim(CONF["auriga"])}, 
+      {"Boötes", trim(CONF["bootes"])},
+      {"Aries", trim(CONF["aries"])}, 
+      {"Ara", trim(CONF["ara"])}, 
+      {"Aquila", trim(CONF["aquila"])},
+      {"Aquarius", trim(CONF["aquarius"])}, 
+      {"Apus", trim(CONF["apus"])}, 
+      {"Antlia", trim(CONF["antlia"])}
+    };
+    string nameToMatch = j["name"].get<string>();
     //renders the constellation's graph from the coordinates specified in the JSON file
     for(int i=1;i<=10;i++)  //for each of the lines (10)
     {
@@ -217,8 +290,20 @@ static inline void PrintConst(string &pathc)
       //insert the line into the template
       s.replace(s.find("%"+to_string(i)), string("%"+to_string(i)).size(), l);
       s = std::regex_replace(s, std::regex("requestedColor"), REQUESTED_COLOR);
+      s = std::regex_replace(s, std::regex("Quadrant"), trim(CONF["quadrant"]));
+      s = std::regex_replace(s, std::regex("Right ascension"), trim(CONF["rightAscension"]));
+      s = std::regex_replace(s, std::regex("Declination"), trim(CONF["declination"]));
+      s = std::regex_replace(s, std::regex("Area"), trim(CONF["area"]));
+      s = std::regex_replace(s, std::regex("Main stars"), trim(CONF["mainStars"]));
+      for (const auto &[key, val] : constellationsKeywords)
+      {
+        if (key == nameToMatch)
+        {
+          s = std::regex_replace(s, std::regex(key), val);
+          break;
+        }
+      }
     }
-
     c.close();
     cout << s << endl;  //prints the output
   }else
@@ -266,4 +351,14 @@ static void Help()
   cout << f.rdbuf();
   f.close();
   exit(EXIT_SUCCESS);
+}
+
+// Trim excess quotes
+static std::string trim(std::string str) {
+  std::string buf;
+  for (auto &x : str) {
+    if (x == '"') { continue; }
+    buf.push_back(x);
+  }
+  return buf;
 }
