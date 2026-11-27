@@ -296,21 +296,19 @@ static inline void PrintConst(string &pathc)
 
       //insert the line into the template
       s.replace(s.find("%"+to_string(i)), string("%"+to_string(i)).size(), l);
-      s = std::regex_replace(s, std::regex("requestedColor"), REQUESTED_COLOR);
-      s = std::regex_replace(s, std::regex("Quadrant"), trim(CONF["quadrant"]));
-      s = std::regex_replace(s, std::regex("Right ascension"), trim(CONF["rightAscension"]));
-      s = std::regex_replace(s, std::regex("Declination"), trim(CONF["declination"]));
-      s = std::regex_replace(s, std::regex("Area"), trim(CONF["area"]));
-      s = std::regex_replace(s, std::regex("Main stars"), trim(CONF["mainStars"]));
-      for (const auto &[key, val] : constellationsKeywords)
-      {
-        if (key == nameToMatch)
-        {
-          s = std::regex_replace(s, std::regex(key), val);
-          break;
-        }
-      }
     }
+
+    //translate the labels and the constellation name once, after the graph is rendered
+    //(doing it inside the loop would re-apply translations that contain the original word, e.g. "Leo" -> "Leone" -> "Leonene")
+    s = std::regex_replace(s, std::regex("requestedColor"), REQUESTED_COLOR);
+    s = std::regex_replace(s, std::regex("Quadrant"), trim(CONF["quadrant"]));
+    s = std::regex_replace(s, std::regex("Right ascension"), trim(CONF["rightAscension"]));
+    s = std::regex_replace(s, std::regex("Declination"), trim(CONF["declination"]));
+    s = std::regex_replace(s, std::regex("Area"), trim(CONF["area"]));
+    s = std::regex_replace(s, std::regex("Main stars"), trim(CONF["mainStars"]));
+    auto translatedName = constellationsKeywords.find(nameToMatch);
+    if (translatedName != constellationsKeywords.end())
+      s = std::regex_replace(s, std::regex(translatedName->first), translatedName->second);
     c.close();
     cout << s << endl;  //prints the output
   }else

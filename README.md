@@ -130,7 +130,7 @@ starfetch [LANGUAGE] [OPTION] [ARGUMENT]
     -l      Prints the list of all the available constellations.
     -c      Use given color such as: black, white, cyan, magenta, yellow, green, red, blue.
 
-LANGUAGE is optional and must come first: en (default) or bg.
+LANGUAGE is optional and must come first: en (default), bg or it.
 
 If launched with no arguments, the behaviour is the same as with '-c white -r'.
 
